@@ -24,6 +24,26 @@ function Body() {
             Home
         </Button>
     );
+    const DaoButton = () => (
+        <Button 
+            onClick={handleMakeDAO} className='px-10 border-purple-500'
+            style={{
+                backgroundImage: 'linear-gradient(90deg, rgba(212,0,83,1) -90%, rgba(0,12,15,1) 90%)'
+            }}
+        >
+            Make A DAO
+        </Button>
+    );
+    const DaosButton = () => (
+        <Button 
+            onClick={handlePickDAO} className='px-11 border-green-600'
+            style={{
+                backgroundImage: 'linear-gradient(270deg, rgba(212,0,83,1) -90%, rgba(0,12,15,1) 90%)'
+            }}
+        >
+            Pick A DAO
+        </Button>
+    );
 
     return (
         <div className='h-full flex flex-col justify-between p-16'>
@@ -31,48 +51,20 @@ function Body() {
             <div className='flex flex-row justify-center space-x-4'>
                 { currentView === 'content' && (
                     <>
-                        <Button 
-                            onClick={handleMakeDAO} className='px-10 border-purple-500'
-                            style={{
-                                backgroundImage: 'linear-gradient(90deg, rgba(212,0,83,1) -90%, rgba(0,12,15,1) 90%)'
-                            }}
-                        >
-                            Make A DAO
-                        </Button>
-                        <Button 
-                            onClick={handlePickDAO} className='px-11 border-green-600'
-                            style={{
-                                backgroundImage: 'linear-gradient(270deg, rgba(212,0,83,1) -90%, rgba(0,12,15,1) 90%)'
-                            }}
-                        >
-                            Pick A DAO
-                        </Button>
+                        <DaoButton/>
+                        <DaosButton/>
                     </>
                 )}
                 { currentView === 'dao' && (
                     <>
                         <HomeButton/>
-                        <Button 
-                            onClick={handlePickDAO} className='px-11 border-green-600'
-                            style={{
-                                backgroundImage: 'linear-gradient(270deg, rgba(212,0,83,1) -90%, rgba(0,12,15,1) 90%)'
-                            }}
-                        >
-                            Pick A DAO
-                        </Button>
+                        <DaosButton/>
                     </>
                 )}
                 { currentView === 'daos' && (
                     <>
                         <HomeButton/>
-                        <Button 
-                            onClick={handleMakeDAO} className='px-10 border-purple-500'
-                            style={{
-                                backgroundImage: 'linear-gradient(90deg, rgba(212,0,83,1) -90%, rgba(0,12,15,1) 90%)'
-                            }}
-                        >
-                            Make A DAO
-                        </Button>
+                        <DaoButton/>
                     </>
                 )}
             </div>
