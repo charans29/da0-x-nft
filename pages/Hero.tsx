@@ -1,8 +1,8 @@
 "use client";
 import React from 'react';
-import Header from './Header';
-import Body from './Body';
-import Footer from './Footer';
+import Header from '../elements/Header';
+import Body from '../elements/Body';
+import Footer from '../elements/Footer';
 
 function Hero() {
   return (
