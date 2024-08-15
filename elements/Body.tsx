@@ -49,24 +49,12 @@ function Body() {
         <div className='h-full flex flex-col justify-between p-16'>
            { currentView === 'dao' ? <DAO /> : currentView === 'daos' ? <DAOS /> : <Content /> }
             <div className='flex flex-row justify-center space-x-4'>
-                { currentView === 'content' && (
-                    <>
-                        <DaoButton/>
-                        <DaosButton/>
-                    </>
-                )}
-                { currentView === 'dao' && (
-                    <>
-                        <HomeButton/>
-                        <DaosButton/>
-                    </>
-                )}
-                { currentView === 'daos' && (
-                    <>
-                        <HomeButton/>
-                        <DaoButton/>
-                    </>
-                )}
+                {   currentView === 'dao' ? <><HomeButton/><DaosButton/></> 
+                    :
+                    currentView === 'daos' ? <><DaoButton/><HomeButton/></>
+                    :
+                    <><DaoButton/><DaosButton/></>
+                }
             </div>
         </div>
       )
