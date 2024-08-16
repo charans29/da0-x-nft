@@ -2,7 +2,7 @@ import React from 'react'
 
 function Content() {
   return (
-    <div className='font-thin text-sm text-center'>
+    <div className='font-thin text-md text-center'>
         <text 
             style={{
                 background: `linear-gradient(302deg, rgba(249,5,5,1) 0%, rgba(4,248,251,1) 61%, rgba(242,5,151,1) 100%)`,
