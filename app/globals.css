@@ -6,7 +6,6 @@ body {
     background-color: #0C0F14; 
     position: fixed;
     aspect-ratio: 1.91 / 1;
-    overflow: hidden;
 }
 
 @media screen and (min-height: 1200px) {
