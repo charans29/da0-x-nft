@@ -14,7 +14,7 @@ function Content() {
             with fellow enthusiasts to <br />
             own, trade, and profit from high-value NFTs
         </text>
-        <div className='text-sm font-thin p-2'>
+        <div className='text-sm font-thin p-2 text-white'>
             Explore, collaborate, and grow your digital portfolio with DAOxNFT.
         </div>
     </div>
