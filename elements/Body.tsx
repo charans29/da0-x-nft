@@ -54,6 +54,7 @@ function Body() {
                     currentView === 'daos' ? <><DaoButton/><HomeButton/></>
                     :
                     <><DaoButton/><DaosButton/></>
+                    
                 }
             </div>
         </div>
