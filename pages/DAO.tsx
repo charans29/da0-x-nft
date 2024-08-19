@@ -10,8 +10,8 @@ function DAO() {
       backgroundImage: `linear-gradient(300deg, rgba(234,88,88,0.1) 30%, rgba(130,110,118,0.35) 120%)`
     }}
   >
-    <text className='text-md text-blue-500 font-bold font-sans pt-3'>
-      SELECT NFT FOr YOUR DAO
+    <text className='text-md text-blue-600 font-bold font-sans pt-3'>
+      SELECT NFT FOR YOUR DAO
     </text>
     {/* <div className='flex flex-row'> */}
       <ParallaxView/>

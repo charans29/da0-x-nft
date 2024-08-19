@@ -461,9 +461,9 @@ const NFTs: NFT[] = [
         hasCNFTs: false
     },
     {
-        symbol: "MAD",
-        name: "Mad Lads #6867",
-        description: "Fock it.",
+        symbol: "Mad Lads #6867",
+        name: "Fock It.",
+        description: "50",
         image: "/api/image-proxy?url=https://madlads.s3.us-west-2.amazonaws.com/images/6867.png",
         floorPrice: 146380000,
         volumeAll: 1036.5811600860013,
