@@ -1,3 +1,4 @@
+import ParallaxView from '@/components/ParallaxView'
 import React from 'react'
 
 function DAO() {
@@ -9,7 +10,7 @@ function DAO() {
       backgroundImage: `linear-gradient(300deg, rgba(234,88,88,0.1) 30%, rgba(130,110,118,0.35) 120%)`
     }}
   >
-      DAO
+      <ParallaxView/>
     </div>
   )
 }

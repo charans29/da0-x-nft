@@ -1,4 +1,3 @@
-import FloatingMeta from "@/components/FloatingMeta";
 import Hero from "../pages/Hero";
 
 export default function Home() {
@@ -10,7 +9,6 @@ export default function Home() {
       backgroundPosition: 'center 10%'
     }}>
       <Hero/>
-      {/* <FloatingMeta/> */}
     </main>
   );
 }
