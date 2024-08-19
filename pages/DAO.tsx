@@ -13,11 +13,10 @@ function DAO() {
     <text className='text-md text-blue-500 font-bold font-sans pt-3'>
       SELECT NFT FOr YOUR DAO
     </text>
-    {/* <ParallaxView/> */}
-    <img src='/api/image-proxy?url=https://creator-hub-prod.s3.us-east-2.amazonaws.com/collection_images/taiyo_robotics.jpg'
+    <ParallaxView/>
+    {/* <img src='/api/image-proxy?url=https://creator-hub-prod.s3.us-east-2.amazonaws.com/collection_images/taiyo_robotics.jpg'
       className='h-10 w-10 object-cover'
-    >
-    </img>
+    /> */}
     </div>
   )
 }
