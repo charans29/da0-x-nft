@@ -37,7 +37,7 @@ export const ParallaxScroll = ({
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-start  max-w-5xl mx-auto gap-20 py-20 px-20"
         ref={gridRef}
       >
-        <div className="grid gap-20">
+        <div className="grid gap-10">
           {firstPart.map((el, idx) => (
             <motion.div
               style={{ y: translateFirst }} // Apply the translateY motion value here
@@ -45,7 +45,7 @@ export const ParallaxScroll = ({
             >
               <img
                 src={el}
-                className="h-80 w-full object-cover object-left-top rounded-lg gap-20 !m-0 !p-0"
+                className="h-20 w-20 object-cover object-left-top rounded-lg gap-1 !m-0 !p-0"
                 height="40"
                 width="40"
                 alt="thumbnail"
@@ -53,12 +53,12 @@ export const ParallaxScroll = ({
             </motion.div>
           ))}
         </div>
-        <div className="grid gap-20">
+        <div className="grid gap-10">
           {secondPart.map((el, idx) => (
             <motion.div style={{ y: translateSecond }} key={"grid-2" + idx}>
               <img
                 src={el}
-                className="h-80 w-full object-cover object-left-top rounded-lg gap-20 !m-0 !p-0"
+                className="h-20 w-20 object-cover object-left-top rounded-lg gap-1 !m-0 !p-0"
                 height="40"
                 width="40"
                 alt="thumbnail"
@@ -66,12 +66,12 @@ export const ParallaxScroll = ({
             </motion.div>
           ))}
         </div>
-        <div className="grid gap-20">
+        <div className="grid gap-10">
           {thirdPart.map((el, idx) => (
             <motion.div style={{ y: translateThird }} key={"grid-3" + idx}>
               <img
                 src={el}
-                className="h-80 w-full object-cover object-left-top rounded-lg gap-20 !m-0 !p-0"
+                className="h-20 w-20 object-cover object-left-top rounded-lg gap-1 !m-0 !p-0"
                 height="40"
                 width="40"
                 alt="thumbnail"
