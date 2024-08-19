@@ -14,8 +14,8 @@ function DAO() {
       SELECT NFT FOr YOUR DAO
     </text>
     {/* <ParallaxView/> */}
-    <img src='https://creator-hub-prod.s3.us-east-2.amazonaws.com/collection_images/taiyo_robotics.jpg'
-      className='h-10 w-10'
+    <img src='/api/image-proxy?url=https://creator-hub-prod.s3.us-east-2.amazonaws.com/collection_images/taiyo_robotics.jpg'
+      className='h-10 w-10 object-cover'
     >
     </img>
     </div>
