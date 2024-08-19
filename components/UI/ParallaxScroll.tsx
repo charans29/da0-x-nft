@@ -29,22 +29,22 @@ export const ParallaxScroll = ({
 
   return (
     <div
-      className={cn("h-[10rem] overflow-y-auto w-full items-end", className)}
+      className={cn("h-[20rem] items-center overflow-y-auto w-full", className)}
       ref={gridRef}
     >
       <div
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-start  max-w-5xl mx-auto gap-5 py-14 px-5"
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 items-center py-14 px-5"
         ref={gridRef}
       >
         <div className="grid gap-10">
           {firstPart.map((el, idx) => (
             <motion.div
-              style={{ y: translateFirst }} // Apply the translateY motion value here
+              style={{ y: translateFirst }}
               key={"grid-1" + idx}
             >
               <img 
                 src={el}
-                className="h-20 w-20 object-cover object-left-top rounded-lg gap-10 !m-0 !p-0 cursor-pointer"
+                className="h-24 w-24 object-cover object-left-top rounded-lg gap-5 !m-0 !p-0 cursor-pointer"
               />
             </motion.div>
           ))}
@@ -54,7 +54,7 @@ export const ParallaxScroll = ({
             <motion.div style={{ y: translateSecond }} key={"grid-2" + idx}>
               <img
                 src={el}
-                className="h-20 w-20 object-cover object-left-top rounded-lg gap-10 !m-0 !p-0 cursor-pointer"
+                className="h-24 w-24 object-cover object-left-top rounded-lg gap-5 !m-0 !p-0 cursor-pointer"
               />
             </motion.div>
           ))}
@@ -64,7 +64,7 @@ export const ParallaxScroll = ({
             <motion.div style={{ y: translateThird }} key={"grid-3" + idx}>
               <img
                 src={el}
-                className="h-20 w-20 object-cover object-left-top rounded-lg gap-10 !m-0 !p-0 cursor-pointer"
+                className="h-24 w-24 object-cover object-left-top rounded-lg gap-5 !m-0 !p-0 cursor-pointer"
               />
             </motion.div>
           ))}
