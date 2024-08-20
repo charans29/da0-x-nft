@@ -1,4 +1,4 @@
-interface NFT {
+export interface NFT {
     symbol: string;
     name: string;
     description: string;

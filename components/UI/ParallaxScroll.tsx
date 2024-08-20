@@ -3,12 +3,13 @@ import { useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { NFT } from "./NFTs";
 
 export const ParallaxScroll = ({
   nfts,
   className,
 }: {
-  nfts: string[];
+  nfts: NFT[];
   className?: string;
 }) => {
   const gridRef = useRef<any>(null);
@@ -43,9 +44,10 @@ export const ParallaxScroll = ({
               key={"grid-1" + idx}
             >
               <img 
-                src={el}
+                src={el.image}
                 className="h-24 w-24 object-cover object-left-top rounded-lg !m-0 !p-0 cursor-pointer"
               />
+              {/* <text>{ el.floorPrice }</text> */}
             </motion.div>
           ))}
         </div>
@@ -53,7 +55,7 @@ export const ParallaxScroll = ({
           {secondPart.map((el, idx) => (
             <motion.div style={{ y: translateSecond }} key={"grid-2" + idx}>
               <img
-                src={el}
+                src={el.image}
                 className="h-24 w-24 object-cover object-left-top rounded-lg !m-0 !p-0 cursor-pointer"
               />
             </motion.div>
@@ -63,8 +65,9 @@ export const ParallaxScroll = ({
           {thirdPart.map((el, idx) => (
             <motion.div style={{ y: translateThird }} key={"grid-3" + idx}>
               <img
-                src={el}
+                src={el.image}
                 className="h-24 w-24 object-cover object-left-top rounded-lg !m-0 !p-0 cursor-pointer"
+                onClick={() => {console.log("TTTTTTTTTTTi= ",el)}}
               />
             </motion.div>
           ))}
