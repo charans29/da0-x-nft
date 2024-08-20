@@ -29,15 +29,6 @@ const NFTs: NFT[] = [
         hasCNFTs: false
     },
     {
-        symbol: "parcl",
-        name: "Homeowners Association (Parcl)",
-        description: "2",
-        image: "/api/image-proxy?url=https://bafybeiaaku476rhseb7pz7zcesevpz7ljm3gyvmc52yqpo2zpchsqlkr7i.ipfs.nftstorage.link/4367.png?ext=png",
-        floorPrice: 21300000000,
-        volumeAll: 291041.8032514279,
-        hasCNFTs: false
-    },
-    {
         symbol: "open_solmap",
         name: "Open Solmap",
         description: "3",
@@ -167,7 +158,7 @@ const NFTs: NFT[] = [
         symbol: "zetacards_s2",
         name: "ZETA CARDS - S2",
         description: "17",
-        image: "/api/image-proxy?url=https://bafkreihtg7spdwkxdvm443jnzigsawiwnjadgncotjetketqgezfkag3r4.ipfs.nftstorage.link/",
+        image: "/api/image-proxy?url=https://madlads.s3.us-west-2.amazonaws.com/images/9764.png",
         floorPrice: 506999300,
         volumeAll: 30871.503065686047,
         hasCNFTs: true
@@ -468,7 +459,16 @@ const NFTs: NFT[] = [
         floorPrice: 146380000,
         volumeAll: 1036.5811600860013,
         hasCNFTs: false
-      }
+      },
+      {
+        symbol: "parcl",
+        name: "Homeowners Association (Parcl)",
+        description: "51",
+        image: "/api/image-proxy?url=https://bafkreihtg7spdwkxdvm443jnzigsawiwnjadgncotjetketqgezfkag3r4.ipfs.nftstorage.link/",
+        floorPrice: 21300000000,
+        volumeAll: 291041.8032514279,
+        hasCNFTs: false
+    }
 ]
 
 export default NFTs

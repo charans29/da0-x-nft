@@ -17,9 +17,9 @@ export const ParallaxScroll = ({
     offset: ["start start", "end start"], // remove this if your container is not fixed height
   });
 
-  const translateFirst = useTransform(scrollYProgress, [0, 1], [0, -200]);
+  const translateFirst = useTransform(scrollYProgress, [0, 1], [0, -1]);
   const translateSecond = useTransform(scrollYProgress, [0, 1], [0, 200]);
-  const translateThird = useTransform(scrollYProgress, [0, 1], [0, -200]);
+  const translateThird = useTransform(scrollYProgress, [0, 1], [0, -1]);
 
   const third = Math.ceil(nfts.length / 3);
 
@@ -44,7 +44,7 @@ export const ParallaxScroll = ({
             >
               <img 
                 src={el}
-                className="h-24 w-24 object-cover object-left-top rounded-lg gap-5 !m-0 !p-0 cursor-pointer"
+                className="h-24 w-24 object-cover object-left-top rounded-lg !m-0 !p-0 cursor-pointer"
               />
             </motion.div>
           ))}
@@ -54,7 +54,7 @@ export const ParallaxScroll = ({
             <motion.div style={{ y: translateSecond }} key={"grid-2" + idx}>
               <img
                 src={el}
-                className="h-24 w-24 object-cover object-left-top rounded-lg gap-5 !m-0 !p-0 cursor-pointer"
+                className="h-24 w-24 object-cover object-left-top rounded-lg !m-0 !p-0 cursor-pointer"
               />
             </motion.div>
           ))}
@@ -64,7 +64,7 @@ export const ParallaxScroll = ({
             <motion.div style={{ y: translateThird }} key={"grid-3" + idx}>
               <img
                 src={el}
-                className="h-24 w-24 object-cover object-left-top rounded-lg gap-5 !m-0 !p-0 cursor-pointer"
+                className="h-24 w-24 object-cover object-left-top rounded-lg !m-0 !p-0 cursor-pointer"
               />
             </motion.div>
           ))}
