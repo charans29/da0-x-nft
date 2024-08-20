@@ -10,9 +10,9 @@ function DaoForm() {
             }}
         />
         <fieldset>
-        <legend className='text-center mb-4 text-xs'>CREATE YOUR DAO</legend>
+        <legend className='text-center mb-3 text-xs'>CREATE YOUR DAO</legend>
         <label className='items-start font-sans text-xs'>DAO Name</label><br/>
-        <input className='rounded bg-transparent focus:outline-none text-xs py-1 px-1.5 text-white font-thin mb-3'
+        <input className='rounded bg-transparent focus:outline-none text-xs py-1 px-1.5 text-white font-thin mb-2'
             style={{
                 backgroundImage: `linear-gradient(180deg, rgba(50, 50, 80, 0.3) 100%, rgba(10,1,1,0.35) 0%)`,
                 width:`300px`
@@ -21,7 +21,7 @@ function DaoForm() {
               type='text'
         ></input><br/>
         <label className='items-start font-sans text-xs'>Fractionalization</label><br/>
-        <input className='rounded bg-transparent focus:outline-none text-xs py-1 px-1.5 text-white font-thin mb-3'
+        <input className='rounded bg-transparent focus:outline-none text-xs py-1 px-1.5 text-white font-thin mb-2'
             style={{
                 backgroundImage: `linear-gradient(180deg, rgba(50, 50, 80, 0.3) 100%, rgba(10,1,1,0.35) 0%)`,
                 width:`300px`
@@ -30,7 +30,7 @@ function DaoForm() {
               type='text'
         ></input><br/>
         <label className='items-start font-sans text-xs'>Your Sahre</label><br/>
-        <input className='rounded bg-transparent focus:outline-none text-xs py-1 px-1.5 text-white font-thin mb-3'
+        <input className='rounded bg-transparent focus:outline-none text-xs py-1 px-1.5 text-white font-thin mb-2'
             style={{
                 backgroundImage: `linear-gradient(180deg, rgba(50, 50, 80, 0.3) 100%, rgba(10,1,1,0.35) 0%)`,
                 width:`300px`
@@ -39,7 +39,7 @@ function DaoForm() {
               type='text'
         ></input><br/>
         <label className='items-start font-sans text-xs'>NFT Price</label><br/>
-        <input className='rounded bg-transparent focus:outline-none text-xs py-1 px-1.5 text-white font-thin mb-3'
+        <input className='rounded bg-transparent focus:outline-none text-xs py-1 px-1.5 text-white font-thin mb-2'
             style={{
                 backgroundImage: `linear-gradient(180deg, rgba(50, 50, 80, 0.3) 100%, rgba(10,1,1,0.35) 0%)`,
                 width:`300px`
