@@ -10,7 +10,7 @@ function DaoForm() {
             }}
         />
         <fieldset>
-        <legend className='text-center mb-8 text-xs'>CREATE YOUR DAO</legend>
+        <legend className='text-center mb-4 text-xs'>CREATE YOUR DAO</legend>
         <label className='items-start font-sans text-xs'>DAO Name</label><br/>
         <input className='rounded bg-transparent focus:outline-none text-xs py-1 px-1.5 text-white font-thin mb-3'
             style={{
