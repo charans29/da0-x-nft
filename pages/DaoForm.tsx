@@ -5,7 +5,7 @@ function DaoForm() {
   return (
     <div className='flex flex-1 justify-between items-center w-10/12'>
         <div className='flex flex-row justify-between space-x-2'>
-            <div className='h-32 w-32 rounded-lg'
+            <div className='h-36 w-36 rounded-lg'
                 style={{
                     backgroundImage:`url(/api/image-proxy?url=https://bafkreihtg7spdwkxdvm443jnzigsawiwnjadgncotjetketqgezfkag3r4.ipfs.nftstorage.link/)`,
                     backgroundSize:'100% 100%'
