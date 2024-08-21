@@ -33,7 +33,7 @@ function DAO() {
         :
         <>
           <text className='text-md text-blue-600 font-semibold font-sans pt-3'>
-          Bowse NFT's FOR YOUR DAO
+          Bowse NFT&apos;s FOR YOUR DAO
           </text>
           <ParallaxScroll nfts={NFTs}/>
         </>
