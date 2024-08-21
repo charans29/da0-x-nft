@@ -22,10 +22,10 @@ function DAO() {
             NFT FOR YOUR DAO
           </text>
           <DaoForm/>
-          <BiArrowBack onClick={()=>{setSelected(false)}} className='cursor-pointer h-6 w-7 rounded-md '
+          <BiArrowBack onClick={()=>{setSelected(false)}} className='cursor-pointer h-5 w-5 rounded-md '
             style={{
               backgroundImage: `linear-gradient(180deg, rgba(50, 50, 80, 0.5) 100%, rgba(10,1,1,0.35) 0%)`,
-              fontSize:"20px",
+              fontSize:"25px",
               color:"black",
             }}
           />
@@ -33,7 +33,7 @@ function DAO() {
         :
         <>
           <text className='text-md text-blue-600 font-semibold font-sans pt-3'>
-          Bowse NFT&apos;s FOR YOUR DAO
+            BROWSE NFT&apos;s FOR YOUR DAO
           </text>
           <ParallaxScroll nfts={NFTs}/>
         </>
