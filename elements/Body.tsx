@@ -1,4 +1,5 @@
 import Button from '@/components/Button'
+import { DaoProvider } from '@/context/DaoContext';
 import Content from '@/elements/Content'
 import DAO from '@/pages/DAO';
 import DAOS from '@/pages/DAOS';
@@ -47,14 +48,13 @@ function Body() {
 
     return (
         <div className='h-full flex flex-col justify-between items-center space-y-3 mb-2'>
-           { currentView === 'dao' ? <DAO /> : currentView === 'daos' ? <DAOS /> : <Content /> }
+           { currentView === 'dao' ? <DaoProvider><DAO/></DaoProvider> : currentView === 'daos' ? <DAOS /> : <Content /> }
             <div className='flex flex-row justify-center space-x-4'>
                 {   currentView === 'dao' ? <><HomeButton/><DaosButton/></> 
                     :
                     currentView === 'daos' ? <><DaoButton/><HomeButton/></>
                     :
-                    <><DaoButton/><DaosButton/></>
-                    
+                    <><DaoButton/><DaosButton/></>   
                 }
             </div>
         </div>

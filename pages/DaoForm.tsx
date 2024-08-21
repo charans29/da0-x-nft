@@ -1,13 +1,15 @@
 import Button from '@/components/Button'
+import { useDAO } from '@/context/DaoContext'
 import React from 'react'
 
 function DaoForm() {
+    const { nft } = useDAO();
   return (
     <div className='flex flex-1 justify-between items-center w-10/12'>
         <div className='flex flex-row justify-between space-x-2'>
             <div className='h-36 w-36 rounded-lg'
                 style={{
-                    backgroundImage:`url(/api/image-proxy?url=https://bafkreihtg7spdwkxdvm443jnzigsawiwnjadgncotjetketqgezfkag3r4.ipfs.nftstorage.link/)`,
+                    backgroundImage:`url(${nft?.image})`,
                     backgroundSize:'100% 100%'
                 }}
             />
@@ -32,7 +34,7 @@ function DaoForm() {
                 placeholder='Arstistic Aliance'
                 type='text'
             ></input>
-            <label className='items-start font-sans text-xs'>Fractionalization</label>
+            <label className='items-start font-sans text-xs'>Fractions</label>
             <input className='rounded bg-transparent focus:outline-none text-xs p-1.5 text-white font-thin
                 border-[0.25px] border-gray-600'
                 style={{

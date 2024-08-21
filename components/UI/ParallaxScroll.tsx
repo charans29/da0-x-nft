@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { NFT } from "./NFTs";
+import { useDAO } from "@/context/DaoContext";
 
 export const ParallaxScroll = ({
   nfts,
@@ -14,8 +15,8 @@ export const ParallaxScroll = ({
 }) => {
   const gridRef = useRef<any>(null);
   const { scrollYProgress } = useScroll({
-    container: gridRef, // remove this if your container is not fixed height
-    offset: ["start start", "end start"], // remove this if your container is not fixed height
+    container: gridRef, 
+    offset: ["start start", "end start"],
   });
 
   const translateFirst = useTransform(scrollYProgress, [0, 1], [0, -1]);
@@ -27,6 +28,14 @@ export const ParallaxScroll = ({
   const firstPart = nfts.slice(0, third);
   const secondPart = nfts.slice(third, 2 * third);
   const thirdPart = nfts.slice(2 * third);
+
+  const { setSelected, setNft } = useDAO();
+
+  const handleClick = (NFT: any) => {
+    setNft(NFT);
+    console.log(NFT);
+    setSelected(true);
+};
 
   return (
     <div
@@ -46,8 +55,8 @@ export const ParallaxScroll = ({
               <img 
                 src={el.image}
                 className="h-24 w-24 object-cover object-left-top rounded-lg !m-0 !p-0 cursor-pointer"
+                onClick={()=>{handleClick(el)}}
               />
-              {/* <text>{ el.floorPrice }</text> */}
             </motion.div>
           ))}
         </div>
@@ -57,6 +66,7 @@ export const ParallaxScroll = ({
               <img
                 src={el.image}
                 className="h-24 w-24 object-cover object-left-top rounded-lg !m-0 !p-0 cursor-pointer"
+                onClick={()=>{handleClick(el)}}
               />
             </motion.div>
           ))}
@@ -67,7 +77,7 @@ export const ParallaxScroll = ({
               <img
                 src={el.image}
                 className="h-24 w-24 object-cover object-left-top rounded-lg !m-0 !p-0 cursor-pointer"
-                onClick={() => {console.log("TTTTTTTTTTTi= ",el)}}
+                onClick={()=>{handleClick(el)}}
               />
             </motion.div>
           ))}

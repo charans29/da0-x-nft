@@ -1,8 +1,13 @@
-import ParallaxView from '@/components/ParallaxView'
 import React from 'react'
 import DaoForm from './DaoForm'
+import { useDAO } from '@/context/DaoContext'
+import { ParallaxScroll } from '@/components/UI/ParallaxScroll';
+import NFTs from '@/components/UI/NFTs';
+import { BiArrowBack } from "react-icons/bi";
 
 function DAO() {
+  const { isSelected, setSelected } = useDAO();
+
   return (
     <div
       className="h-full w-10/12 rounded-xl flex flex-col justify-between items-center pb-3
@@ -11,14 +16,28 @@ function DAO() {
         backgroundImage: `linear-gradient(300deg, rgba(234,88,88,0.1) 30%, rgba(130,110,118,0.35) 120%)`
       }}
     >
-      {/* <text className='text-md text-blue-600 font-semibold font-sans pt-3'>
-        Bowse NFT's FOR YOUR DAO
-      </text>
-      <ParallaxView/> */}
-      <text className='text-md text-blue-600 font-semibold font-sans pt-3'>
-        NFT FOR YOUR DAO
-      </text>
-      <DaoForm/>
+      { isSelected ?
+        <>
+          <text className='text-md text-blue-600 font-semibold font-sans pt-3'>
+            NFT FOR YOUR DAO
+          </text>
+          <DaoForm/>
+          <BiArrowBack onClick={()=>{setSelected(false)}} className='cursor-pointer h-6 w-7 rounded-md '
+            style={{
+              backgroundImage: `linear-gradient(180deg, rgba(50, 50, 80, 0.5) 100%, rgba(10,1,1,0.35) 0%)`,
+              fontSize:"20px",
+              color:"black",
+            }}
+          />
+        </>
+        :
+        <>
+          <text className='text-md text-blue-600 font-semibold font-sans pt-3'>
+          Bowse NFT's FOR YOUR DAO
+          </text>
+          <ParallaxScroll nfts={NFTs}/>
+        </>
+      }
     </div>
   )
 }
