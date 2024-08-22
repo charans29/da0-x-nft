@@ -11,10 +11,10 @@ function Button({ children, onClick, className,  style, disabled}: {
   return (
     <button 
       className={cn(
-        `border rounded-full text-sm font-extralight cursor-pointer px-3 py-1`,
+        `border rounded-full text-sm font-extralight px-3 py-1`,
         disabled
           ? 'opacity-50 text-white/40'
-          : 'opacity-80 text-white/80',
+          : 'cursor-pointer opacity-80 text-white/80',
         className
       )} 
       onClick={onClick}

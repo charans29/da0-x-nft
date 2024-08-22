@@ -13,10 +13,22 @@ function Nft() {
         />
         <div className='flex flex-col justify-end'>
             <text className='text-xs font-mono'>
-                Asset Price:
+                Name:
+                <div className='ml-1 text-purple-300'>
+                    {nft?.name}
+                </div>
+            </text>
+            <text className='text-xs font-mono'>
+                Price:
+                <div className='ml-1 text-green-300'>
+                    {nft?.floorPrice}
+                </div>
             </text>
             <text className='text-xs font-mono'>
                 Volume:
+                <div className='ml-1 text-blue-300'>
+                    {nft?.volumeAll}
+                </div>
             </text>
         </div>
     </div>

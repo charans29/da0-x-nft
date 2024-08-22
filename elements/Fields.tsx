@@ -18,6 +18,8 @@ function Fields() {
             asset: nft?.image,
             fractions: parseInt(fractions) || 0,
             share: parseInt(share) || 0, 
+            count: 1,
+            creator: ""
         }
 
         DAOs.push(newDAO) 

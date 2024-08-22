@@ -39,11 +39,11 @@ export const ParallaxScroll = ({
 
   return (
     <div
-      className={cn("h-[15rem] items-center overflow-y-auto w-full ml-24", className)}
+      className={cn("h-[15rem] items-center overflow-y-auto w-full", className)}
       ref={gridRef}
     >
       <div
-        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 items-center py-14 px-5 ml-2"
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 items-center py-14 px-5"
         ref={gridRef}
       >
         <div className="grid gap-10">
@@ -51,34 +51,61 @@ export const ParallaxScroll = ({
             <motion.div
               style={{ y: translateFirst }}
               key={"grid-1" + idx}
+              className="flex flex-col items-center"
             >
               <img 
                 src={el.image}
                 className="h-24 w-24 object-cover object-left-top rounded-lg !m-0 !p-0 cursor-pointer"
                 onClick={()=>{handleClick(el)}}
               />
+              <text className='text-xs font-mono'>
+                Art by:
+              </text>
+              <text className='text-xs font-mono'>
+                {el.symbol}
+              </text>
             </motion.div>
           ))}
         </div>
         <div className="grid gap-10">
           {secondPart.map((el, idx) => (
-            <motion.div style={{ y: translateSecond }} key={"grid-2" + idx}>
+            <motion.div 
+              style={{ y: translateSecond }} 
+              key={"grid-2" + idx}
+              className="flex flex-col items-center"
+            >
               <img
                 src={el.image}
                 className="h-24 w-24 object-cover object-left-top rounded-lg !m-0 !p-0 cursor-pointer"
                 onClick={()=>{handleClick(el)}}
               />
+              <text className='text-xs font-mono'>
+                Art by:
+              </text>
+              <text className='text-xs font-mono'>
+                {el.symbol}
+              </text>
             </motion.div>
           ))}
         </div>
         <div className="grid gap-10">
           {thirdPart.map((el, idx) => (
-            <motion.div style={{ y: translateThird }} key={"grid-3" + idx}>
+            <motion.div 
+              style={{ y: translateThird }}
+              key={"grid-3" + idx}
+              className="flex flex-col items-center"
+            >
               <img
                 src={el.image}
                 className="h-24 w-24 object-cover object-left-top rounded-lg !m-0 !p-0 cursor-pointer"
                 onClick={()=>{handleClick(el)}}
               />
+              <text className='text-xs font-mono'>
+                Art by:
+              </text>
+              <text className='text-xs font-mono'>
+                {el.symbol}
+              </text>
             </motion.div>
           ))}
         </div>
