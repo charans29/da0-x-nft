@@ -16,19 +16,19 @@ function DAOS() {
       <text className='text-md text-blue-600 font-semibold font-sans pt-3'>
         JOIN A DAO NFT U LIKE
       </text>
-      <div className='flex flex-row justify-between space-x-3.5 px-24 overflow-x-auto'
+      <div className='flex flex-row space-x-3.5 overflow-x-auto px-24'
         style={{
           scrollbarWidth: 'none'
         }}
       >
         {DAOs.slice().reverse().map((nft, idx) => (
-          <div key={idx}>
+          <div key={idx} className='flex flex-col space-y-1.5 min-w-[180px]'>
             <img className='cursor-pointer'
               src={nft.asset}
               style={{height:'220px', width:'180px', borderRadius:'10px'}}
               onClick={()=>{}}
             />
-            <div className='flex justify-between mt-2'>
+            <div className='flex flex-row justify-between'>
               <div className='text-start font-mono text-xs'>
                 { nft.count === nft.fractions 
                   ? <RiDoorClosedFill className='fill-red-600'/>
@@ -56,8 +56,8 @@ function DAOS() {
           ))}
       </div>
       <div className='flex justify-center pb-3 space-x-2'>
-        <AiOutlineCaretLeft className='bg-gray-800 rounded-full -p-3 cursor-pointer' style={{color:'gray'}}/>
-        <AiOutlineCaretRight className='bg-gray-800 rounded-full -p-3 cursor-pointer' style={{color:'gray'}}/>
+        <AiOutlineCaretLeft className='bg-gray-800 rounded-full -p-3 cursor-pointer' style={{color:'gray', fontSize:"15px"}}/>
+        <AiOutlineCaretRight className='bg-gray-800 rounded-full -p-3 cursor-pointer' style={{color:'gray', fontSize:"15px"}}/>
       </div>
     </div>
   )

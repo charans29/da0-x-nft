@@ -19,9 +19,9 @@ export const ParallaxScroll = ({
     offset: ["start start", "end start"],
   });
 
-  const translateFirst = useTransform(scrollYProgress, [0, 1], [0, -1]);
+  const translateFirst = useTransform(scrollYProgress, [0, 1], [-20, -1]);
   const translateSecond = useTransform(scrollYProgress, [0, 1], [0, 200]);
-  const translateThird = useTransform(scrollYProgress, [0, 1], [0, -1]);
+  const translateThird = useTransform(scrollYProgress, [0, 1], [-20, -1]);
 
   const third = Math.ceil(nfts.length / 3);
 
