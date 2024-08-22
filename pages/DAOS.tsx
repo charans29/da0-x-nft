@@ -25,11 +25,11 @@ function DAOS() {
           <div key={idx}>
             <img className='cursor-pointer'
               src={nft.asset}
-              style={{height:'250px', width:'175px', borderRadius:'10px'}}
+              style={{height:'220px', width:'180px', borderRadius:'10px'}}
               onClick={()=>{}}
             />
             <div className='flex justify-between mt-2'>
-              <div className='text-start font-mono text-sm'>
+              <div className='text-start font-mono text-xs'>
                 { nft.count === nft.fractions 
                   ? <RiDoorClosedFill className='fill-red-600'/>
                   : <RiDoorOpenFill className='fill-green-600'/>
@@ -38,7 +38,7 @@ function DAOS() {
               </div>
               <Button 
                 onClick={()=>{}} 
-                className={`rounded-md py-0 text-sm border-[0.25px] border-gray-500 ${
+                className={`rounded-md py-0 text-xs border-[0.25px] border-gray-500 ${
                   nft.count === nft.fractions ? 'text-white/40' : 'text-white/80'
                 }`}
                 style={{

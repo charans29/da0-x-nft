@@ -58,12 +58,12 @@ export const ParallaxScroll = ({
                 className="h-24 w-24 object-cover object-left-top rounded-lg !m-0 !p-0 cursor-pointer"
                 onClick={()=>{handleClick(el)}}
               />
-              <text className='text-xs font-mono'>
+              <text className='text-xs font-mono text-white/40 mt-1.5'>
                 Art by:
               </text>
-              <text className='text-xs font-mono'>
+              <p className="text-xs font-mono break-words text-center w-24 text-gray-300">
                 {el.symbol}
-              </text>
+              </p>
             </motion.div>
           ))}
         </div>
@@ -79,12 +79,12 @@ export const ParallaxScroll = ({
                 className="h-24 w-24 object-cover object-left-top rounded-lg !m-0 !p-0 cursor-pointer"
                 onClick={()=>{handleClick(el)}}
               />
-              <text className='text-xs font-mono'>
+              <text className='text-xs font-mono text-white/40 mt-1.5'>
                 Art by:
               </text>
-              <text className='text-xs font-mono'>
+              <p className="text-xs font-mono break-words text-center w-24 text-gray-300">
                 {el.symbol}
-              </text>
+              </p>
             </motion.div>
           ))}
         </div>
@@ -100,12 +100,12 @@ export const ParallaxScroll = ({
                 className="h-24 w-24 object-cover object-left-top rounded-lg !m-0 !p-0 cursor-pointer"
                 onClick={()=>{handleClick(el)}}
               />
-              <text className='text-xs font-mono'>
+              <text className='text-xs font-mono text-white/40 mt-1.5'>
                 Art by:
               </text>
-              <text className='text-xs font-mono'>
+              <p className="text-xs font-mono break-words text-center w-24 text-gray-300">
                 {el.symbol}
-              </text>
+              </p>
             </motion.div>
           ))}
         </div>
