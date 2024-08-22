@@ -18,7 +18,7 @@ function DAOS() {
         {DAOs.map((nft, idx) => (
             <img key={idx}
               src={nft.asset}
-              style={{height:'400px', width:'200px', borderRadius:'10px'}}
+              style={{height:'300px', width:'100px', borderRadius:'10px'}}
               onClick={()=>{}}
             />
           ))}
