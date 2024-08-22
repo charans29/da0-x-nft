@@ -3,7 +3,7 @@ import { useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { NFT } from "./NFTs";
+import { NFT } from "../../pages/api/NFTs";
 import { useDAO } from "@/context/DaoContext";
 
 export const ParallaxScroll = ({

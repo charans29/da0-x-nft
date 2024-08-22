@@ -1,4 +1,4 @@
-import { NFT } from '@/components/UI/NFTs';
+import { NFT } from '@/pages/api/NFTs';
 import React, { createContext, useContext, useState } from 'react';
 
 interface DaoContextProps {

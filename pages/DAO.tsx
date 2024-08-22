@@ -2,7 +2,7 @@ import React from 'react'
 import DaoForm from './DaoForm'
 import { useDAO } from '@/context/DaoContext'
 import { ParallaxScroll } from '@/components/UI/ParallaxScroll';
-import NFTs from '@/components/UI/NFTs';
+import NFTs from '@/pages/api/NFTs';
 import { BiArrowBack } from "react-icons/bi";
 
 function DAO() {
