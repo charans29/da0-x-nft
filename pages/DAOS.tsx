@@ -10,7 +10,7 @@ function DAOS() {
         backgroundImage: `linear-gradient(300deg, rgba(234,88,88,0.1) 30%, rgba(130,110,118,0.35) 120%)`
       }}
     >
-      <div className='flex flex-row justify-between space-x-4 px-28 cursor-pointer overflow-x-auto'
+      <div className='flex flex-row justify-between space-x-2 px-24 cursor-pointer overflow-x-auto'
         style={{
           scrollbarWidth: 'none'
         }}
@@ -18,7 +18,7 @@ function DAOS() {
         {DAOs.map((nft, idx) => (
             <img key={idx}
               src={nft.asset}
-              style={{height:'300px', width:'100px', borderRadius:'10px'}}
+              style={{height:'300px', width:'200px', borderRadius:'10px'}}
               onClick={()=>{}}
             />
           ))}
