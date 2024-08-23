@@ -24,13 +24,19 @@ function Fields() {
 
     const handleCreate = () => {
         const newDAO: DAO = {
-            name: daoName,
-            aaddress: address,
+            DAOname: daoName,
+            address: address,
             asset: nft?.image,
             fractions: parseInt(fractions) || 0,
             share: parseInt(share) || 0, 
             count: 1,
-            creator: ""
+            creator: "",
+            members:[
+                {
+                    name: "",
+                    address: address,
+                }
+            ]
         }
 
         DAOs.push(newDAO) 

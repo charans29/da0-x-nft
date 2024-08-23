@@ -41,6 +41,9 @@ export const ParallaxScroll = ({
     <div
       className={cn("h-[15rem] items-center overflow-y-auto w-full", className)}
       ref={gridRef}
+      style={{
+        scrollbarWidth: 'none'
+      }}
     >
       <div
         className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 items-center py-14 px-5"
