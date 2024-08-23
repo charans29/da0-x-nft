@@ -10,7 +10,7 @@ function Fields() {
     const [fractions, setFractions] = useState('');
     const [share, setShare] = useState('');
     const [isHovered, setIsHovered] = useState(false);
-    const { nft } = useDAO();
+    const { nft, setCreated } = useDAO();
 
     const handleMouseEnter = () => {
         if(!create)
@@ -41,6 +41,9 @@ function Fields() {
 
         DAOs.push(newDAO) 
         setCreate(true)
+        setTimeout(() => {
+            setCreated(true);
+          }, 400);
     }
 
   return (

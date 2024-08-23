@@ -1,15 +1,17 @@
 import Fields from '@/elements/Fields';
 import Nft from '@/elements/Nft';
-import React from 'react'
+import React from 'react';
+import DaoCreated from './DaoCreated';
 
-function DaoForm() {
-    
+function DaoForm({ Dao }: { Dao?: boolean }) {   
   return (
-    <div className='flex flex-1 justify-between items-center w-10/12'>
-        <Nft/>
-        <Fields/>
-    </div>
-  )
+    Dao 
+    ? <DaoCreated/>
+    : <div className='flex flex-1 justify-between items-center w-10/12'>
+        <Nft />
+        <Fields />
+      </div>
+  );
 }
 
-export default DaoForm
+export default DaoForm;

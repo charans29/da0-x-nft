@@ -3,17 +3,19 @@ import DaoForm from './DaoForm'
 import { useDAO } from '@/context/DaoContext'
 import { ParallaxScroll } from '@/components/UI/ParallaxScroll';
 import NFTs from '@/pages/api/NFTs';
-import { BiArrowBack } from "react-icons/bi";
+import BackArrow from '@/components/BackArrow';
 
 function DAO() {
-  const { isSelected, setSelected } = useDAO();
+  const { isSelected, created } = useDAO();
 
   return (
     <div
-      className="h-full w-10/12 rounded-xl flex flex-col justify-between items-center pb-3
-      border-[0.25px] border-red-950 text-white/60 -mt-5"
+      className={`h-full w-10/12 rounded-xl flex flex-col justify-between items-center pb-3 
+      border-[0.25px] ${created ? 'border-blue-600' : 'border-red-950'} text-white/60 -mt-5`}
       style={{
-        backgroundImage: `linear-gradient(300deg, rgba(234,88,88,0.1) 30%, rgba(130,110,118,0.35) 120%)`
+        backgroundImage: created
+          ? 'linear-gradient(180deg, rgba(88,88,234,0.5) 50%, rgba(130,110,118,0.35) 120%)'
+          : 'linear-gradient(300deg, rgba(234,88,88,0.1) 30%, rgba(130,110,118,0.35) 120%)',
       }}
     >
       { isSelected ?
@@ -21,14 +23,8 @@ function DAO() {
           <text className='text-md text-blue-600 font-semibold font-sans pt-3'>
             NFT FOR YOUR DAO
           </text>
-          <DaoForm/>
-          <BiArrowBack onClick={()=>{setSelected(false)}} className='cursor-pointer h-5 w-5 rounded-md '
-            style={{
-              backgroundImage: `linear-gradient(180deg, rgba(50, 50, 80, 0.5) 100%, rgba(10,1,1,0.35) 0%)`,
-              fontSize:"25px",
-              color:"black",
-            }}
-          />
+          <DaoForm Dao={created}/>
+          <BackArrow DaoCreated={created}/>
         </>
         :
         <>

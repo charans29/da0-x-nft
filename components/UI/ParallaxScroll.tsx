@@ -33,7 +33,6 @@ export const ParallaxScroll = ({
 
   const handleClick = (NFT: any) => {
     setNft(NFT);
-    console.log(NFT);
     setSelected(true);
 };
 
