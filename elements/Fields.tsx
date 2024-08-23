@@ -9,7 +9,18 @@ function Fields() {
     const [address, setAddress] = useState('');
     const [fractions, setFractions] = useState('');
     const [share, setShare] = useState('');
+    const [isHovered, setIsHovered] = useState(false);
     const { nft } = useDAO();
+
+    const handleMouseEnter = () => {
+        if(!create)
+            setIsHovered(true);
+    };
+
+    const handleMouseLeave = () => {
+        if(!create)
+            setIsHovered(false);
+    };
 
     const handleCreate = () => {
         const newDAO: DAO = {
@@ -77,11 +88,16 @@ function Fields() {
             value={share}
             onChange={(e) => setShare(e.target.value)}
         ></input>
-        <div className='flex justify-center w-full pt-1.5'>
+        <div className='flex justify-center w-full pt-1.5' 
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+        >
             <Button className='border-[0.25px] border-orange-900 text-center px-8'
                 onClick={handleCreate}
                 style={{
-                    backgroundImage: 'linear-gradient(90deg, rgba(82,0,83,1) -10%, rgba(0,12,15,1) 90%)'
+                    backgroundImage: isHovered
+                    ? 'linear-gradient(270deg, rgba(82,0,83,1) -10%, rgba(0,12,15,1) 90%)'
+                    : 'linear-gradient(90deg, rgba(82,0,83,1) -10%, rgba(0,12,15,1) 90%)'
                 }}
                 disabled={create}
             >

@@ -17,7 +17,7 @@ function Body() {
     const HomeButton = () => (
         <Button 
             onClick={() => setCurrentView('content')} 
-            className='px-14 border-blue-500'
+            className='px-14 border-blue-500 hover:scale-110 duration-300'
             style={{
                 backgroundImage: 'linear-gradient(90deg, rgba(212,0,83,1) -90%, rgba(0,12,15,1) 90%)'
             }}
@@ -27,7 +27,8 @@ function Body() {
     );
     const DaoButton = () => (
         <Button 
-            onClick={handleMakeDAO} className='px-10 border-purple-500'
+            onClick={handleMakeDAO} 
+            className='px-10 border-purple-500 hover:scale-110 duration-300'
             style={{
                 backgroundImage: 'linear-gradient(90deg, rgba(212,0,83,1) -90%, rgba(0,12,15,1) 90%)'
             }}
@@ -37,7 +38,8 @@ function Body() {
     );
     const DaosButton = () => (
         <Button 
-            onClick={handlePickDAO} className='px-11 border-green-600'
+            onClick={handlePickDAO} 
+            className='px-11 border-green-600 hover:scale-110 duration-300'
             style={{
                 backgroundImage: 'linear-gradient(270deg, rgba(212,0,83,1) -90%, rgba(0,12,15,1) 90%)'
             }}
