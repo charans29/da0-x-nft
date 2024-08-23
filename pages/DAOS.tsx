@@ -124,7 +124,7 @@ function DAOS() {
               enter.
           </Button>
           <button
-          className="fixed top-10 right-4 z-[120] h-10 w-10 text-red-600 text-lg bg-gray-800 rounded-full"
+          className="fixed top-10 right-4 z-[120] h-5 w-5 text-red-500 text-sm bg-gray-700 rounded-full"
           onClick={() => setSelectedDaoIdx(null)}
         >
           X
