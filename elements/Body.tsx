@@ -50,7 +50,11 @@ function Body() {
 
     return (
         <div className='h-full flex flex-col justify-between items-center space-y-3 mb-2'>
-           { currentView === 'dao' ? <DaoProvider><DAO/></DaoProvider> : currentView === 'daos' ? <DAOS /> : <Content /> }
+           { currentView === 'dao' 
+           ? <DaoProvider><DAO/></DaoProvider>
+           : currentView === 'daos' 
+           ? <DaoProvider><DAOS/></DaoProvider> 
+           : <Content /> }
             <div className='flex flex-row justify-center space-x-4'>
                 {   currentView === 'dao' ? <><HomeButton/><DaosButton/></> 
                     :
