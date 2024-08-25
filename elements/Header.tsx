@@ -8,7 +8,7 @@ function Header() {
                 Hi, Oxcharan
             </div>
             {/* <div className='fill-purple-500 font-extrabold text-xs font-sans scale-x-120'> */}
-                <GiOrganigram className='fill-gray-300'/>
+                <GiOrganigram className='fill-gray-300 size-6 cursor-pointer'/>
             {/* </div> */}
         </div>
   )
