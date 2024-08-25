@@ -3,7 +3,7 @@ import React from 'react'
 
 function DaoCreated() {
   return (
-    <div className='w-full h-full'>
+    <div className='w-full h-full -mt-5'>
       <Confetti>
         <div className='relative inset-x-[300px] inset-y-[100px]'>
           <img 
