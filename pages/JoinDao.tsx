@@ -1,4 +1,4 @@
-import React, { useState, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 
 function JoinDao({ children }: { children: ReactNode }) {
 

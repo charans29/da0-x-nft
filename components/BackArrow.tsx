@@ -10,7 +10,7 @@ function BackArrow({ DaoCreated }: { DaoCreated?: boolean }) {
             style={{
             backgroundImage: `linear-gradient(180deg, rgba(50, 50, 80, 0.5) 100%, rgba(10,1,1,0.35) 0%)`,
             fontSize:"25px",
-            color:"black",
+            color:"red",
             }}
         />
     :   <BiArrowBack onClick={()=>{setSelected(false)}} className='cursor-pointer h-5 w-5 rounded-md ' 
