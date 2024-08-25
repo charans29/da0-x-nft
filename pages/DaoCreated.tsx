@@ -8,10 +8,10 @@ function DaoCreated() {
         <div className='relative inset-x-[300px] inset-y-[100px]'>
           <img 
             src={"/api/image-proxy?url=https://www.arweave.net/7dntcPrPZeee702M5FBVCAOdnKVS5pGGQJVUsHKGCWI?ext=png"}
-            className="h-28 w-28 rounded-lg cursor-pointer inset-x-[550px] inset-y-[200px] "
+            className="h-28 w-28 rounded-lg cursor-pointer inset-x-[550px] inset-y-[210px] "
           />
         </div>
-        <div className="text-white-500 text-cyan-200 font-light text-center text-xs -mt-10">
+        <div className="text-white-500 text-cyan-200 font-light text-center text-xs -mt-20">
           Woohoo..! Created
         </div>
         <div className="text-white-500 text-cyan-200 font-light mt-10 text-xs text-center">
