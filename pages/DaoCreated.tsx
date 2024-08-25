@@ -11,10 +11,10 @@ function DaoCreated() {
             className="h-32 w-32 rounded-lg cursor-pointer inset-x-[550px] inset-y-[200px] "
           />
         </div>
-        <div className="text-white-500 text-cyan-200 font-light text-center">
+        <div className="text-white-500 text-cyan-200 font-light text-center -mt-10">
           Woohoo..! Created
         </div>
-        <div className="text-white-500 text-cyan-200 font-light mt-52 text-center">
+        <div className="text-white-500 text-cyan-200 font-light mt-20 text-center">
             DAO
         </div>
       </Confetti>
