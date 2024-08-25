@@ -12,7 +12,7 @@ function DAOS() {
   const [selectedDaoIdx, setSelectedDaoIdx] = useState<number | null>(null);
   const [BlinkEnter, setBlinkEnter] = useState(false);
   const [Address, setAddress] = useState("");
-  const { isSelected, setSelected } = useDAO();
+  const { picked, setPicked } = useDAO();
 
   const handleJoin = (idx: number) => {
     const actualIndex = DAOs.length - 1 - idx;
@@ -38,24 +38,24 @@ function DAOS() {
     setTimeout(() => {
       setBlinkEnter(false);
     }, 100);
-    setSelected(true);
+    setPicked(true);
     setTimeout(() => {
-      setSelected(false);
+      setPicked(false);
       setSelectedDaoIdx(null);
-    }, 3000);
+    }, 5000);
   };
 
   return (
     <div 
-      className={`h-full w-10/12 rounded-xl flex flex-col ${ isSelected ? 'justify-center border-green-800' : 'justify-between border-red-950'} text-center border-[0.25px]
+      className={`h-full w-10/12 rounded-xl flex flex-col ${ picked ? 'justify-center border-green-800' : 'justify-between border-red-950'} text-center border-[0.25px]
        text-white/60 -mt-5 backdrop:blur-3xl`}
       style={{
-        backgroundImage: isSelected
+        backgroundImage: picked
         ? `linear-gradient(200deg, rgba(88,254,138,0.5) 10%, rgba(150,90,200,0.5) 100%)`
         : `linear-gradient(300deg, rgba(234,88,88,0.1) 30%, rgba(130,110,118,0.35) 120%)`
       }}
     >
-      {isSelected 
+      {picked 
       ? <DaoSelected/>
       : <>
           <p className='text-md text-blue-600 font-semibold font-sans pt-3'>
