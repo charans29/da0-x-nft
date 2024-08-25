@@ -38,7 +38,9 @@ function DAOS() {
     setTimeout(() => {
       setBlinkEnter(false);
     }, 100);
-    setPicked(true);
+    setTimeout(() => {
+      setPicked(true);
+    }, 500);
     setTimeout(() => {
       setPicked(false);
       setSelectedDaoIdx(null);
