@@ -3,18 +3,18 @@ import React from 'react'
 
 function DaoSelected() {
   return (
-    <div className='w-full h-full'>
+    <div className='w-full h-full -mt-5'>
       <Confetti>
-        <div className='relative inset-x-[550px] inset-y-[200px]'>
+        <div className='relative inset-x-[300px] inset-y-[100px]'>
           <img 
             src={"/api/image-proxy?url=https://www.arweave.net/7dntcPrPZeee702M5FBVCAOdnKVS5pGGQJVUsHKGCWI?ext=png"}
-            className="h-40 w-40 rounded-lg cursor-pointer inset-x-[550px] inset-y-[200px] "
+            className="h-28 w-28 rounded-lg cursor-pointer"
           />
         </div>
-        <text className="text-white-500 text-cyan-200 font-light">
+        <div className="text-white-500 text-cyan-200 font-light text-center text-xs -mt-11">
           Woohoo..! Joined
-        </text>
-        <div className="text-white-500 text-cyan-200 font-light mt-52">
+        </div>
+        <div className="text-white-500 text-cyan-200 font-light mt-36 text-xs text-center">
             DAO
         </div>
       </Confetti>
