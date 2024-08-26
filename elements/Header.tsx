@@ -2,10 +2,13 @@ import UserDaos from '@/components/UserDaos';
 import { useDAO } from '@/context/DaoContext';
 import React, { useEffect, useState } from 'react';
 import { GiOrganigram } from 'react-icons/gi';
+import { CanvasInterface, CanvasClient } from '@dscvr-one/canvas-client-sdk';
+
 
 function Header() {
   const [isSliderOpen, setIsSliderOpen] = useState(false);
   const { view, setView } = useDAO();
+  const [user, setUser] = useState<string | undefined>('');
 
   useEffect(() => {
         if(view !== "content" && isSliderOpen){
@@ -18,10 +21,28 @@ function Header() {
     setIsSliderOpen(!isSliderOpen);
   };
 
+  useEffect(() => {
+    const canvasClient = new CanvasClient();
+
+    async function initializeCanvasClient() {
+      try {
+        const response = await canvasClient.ready();
+        if (response) {
+          setUser(response.untrusted.user?.username);
+          const content = response.untrusted.content; 
+        }
+      } catch (error) {
+        console.error('Error during Canvas client initialization:', error);
+      }
+    }
+
+    initializeCanvasClient();
+  }, []);
+
   return (
       <div className='flex flex-row justify-between p-3 m-5'>
         <div className='text-green-500 font-extrabold text-xs font-sans scale-x-120'>
-          Hi, Oxcharan
+          Hi, { user }
         </div>
         <GiOrganigram 
           className='fill-purple-400 size-5 cursor-pointer' 
