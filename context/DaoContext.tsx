@@ -7,9 +7,13 @@ interface DaoContextProps {
     nft: NFT | null;
     setNft: (nft: NFT | null) => void;
     created: boolean;
-    setCreated: (selected: boolean) => void;
+    setCreated: (created: boolean) => void;
     picked: boolean;
-    setPicked: (selected: boolean) => void;
+    setPicked: (picked: boolean) => void;
+    asset: string;
+    setAsset: (asset: string | "") => void;
+    view: string;
+    setView: (view: string | "") => void;
   }
 
 export const DaoContext = createContext<DaoContextProps>({
@@ -20,7 +24,11 @@ export const DaoContext = createContext<DaoContextProps>({
   created: false,
   setCreated: () => {},
   picked: false,
-  setPicked: () => {}
+  setPicked: () => {},
+  asset: "NFTimage",
+  setAsset: () => {},
+  view: "content",
+  setView: () => {}
 });
 
 interface DaoProviderProps {
@@ -32,13 +40,17 @@ export const DaoProvider: React.FC<DaoProviderProps> = ({ children }) => {
     const [nft, setNft] = useState<NFT | null>(null);
     const [created, setCreated] = useState<boolean>(false);
     const [picked, setPicked] = useState<boolean>(false);
+    const [asset, setAsset] = useState<string>("NFTimage");
+    const [view, setView] = useState<string>("content");
   
     return (
       <DaoContext.Provider value={{ 
           isSelected, setSelected, 
           nft, setNft, 
           created, setCreated, 
-          picked, setPicked 
+          picked, setPicked,
+          asset, setAsset,
+          view, setView
         }}
       >
         {children}

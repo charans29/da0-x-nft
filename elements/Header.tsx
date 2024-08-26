@@ -1,13 +1,20 @@
 import UserDaos from '@/components/UserDaos';
 import { useDAO } from '@/context/DaoContext';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { GiOrganigram } from 'react-icons/gi';
 
 function Header() {
   const [isSliderOpen, setIsSliderOpen] = useState(false);
-  const { created } = useDAO();
+  const { view, setView } = useDAO();
+
+  useEffect(() => {
+        if(view !== "content" && isSliderOpen){
+            setIsSliderOpen(!isSliderOpen);
+        }
+    }, [view]);
 
   const toggleSlider = () => {
+    setView("content")
     setIsSliderOpen(!isSliderOpen);
   };
 

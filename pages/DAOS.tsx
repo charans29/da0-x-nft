@@ -12,7 +12,7 @@ function DAOS() {
   const [selectedDaoIdx, setSelectedDaoIdx] = useState<number | null>(null);
   const [BlinkEnter, setBlinkEnter] = useState(false);
   const [Address, setAddress] = useState("");
-  const { picked, setPicked } = useDAO();
+  const { picked, setPicked, setAsset } = useDAO();
 
   const handleJoin = (idx: number) => {
     const actualIndex = DAOs.length - 1 - idx;
@@ -34,6 +34,8 @@ function DAOS() {
     };
     DAOs[idx].members.push(newMember);
     DAOs[idx].count = DAOs[idx].members.length;
+    const assetValue = DAOs[idx].asset || "";
+    setAsset(assetValue);
     setBlinkEnter(true);
     setTimeout(() => {
       setBlinkEnter(false);
@@ -58,7 +60,9 @@ function DAOS() {
       }}
     >
       {picked 
-      ? <DaoSelected/>
+      ? <> <p className='text-md text-cyan-200 font-semibold font-sans pt-3'>
+      CONGRATS ON YOUR PICK
+    </p><DaoSelected/></>
       : <>
           <p className='text-md text-blue-600 font-semibold font-sans pt-3'>
             JOIN A DAO NFT U LIKE
