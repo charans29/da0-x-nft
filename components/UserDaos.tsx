@@ -34,10 +34,10 @@ function UserDaos() {
         backgroundImage: 'linear-gradient(180deg, rgba(50,40,80,0.75) 10%, rgba(50,100,80,0.75) 130%)',
       }}
     >
-      <h2 className='text-md text-purple-200 font-thin mb-4 sticky top-0 p-2 text-center z-10 scale-x-90 scale-y-75'>
+      <h2 className='text-md text-purple-200 font-thin mb-4 sticky top-0 text-center z-10 scale-x-90 scale-y-75'>
         YOUR DAOS
       </h2>
-      <ul className='relative h-full overflow-y-auto mt-5 z-0' 
+      <ul className='relative h-full overflow-y-auto z-0 py-5' 
         style={{ scrollbarWidth: 'none' }}
         >
         {DAOs.map((dao, index) => (
