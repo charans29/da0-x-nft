@@ -105,9 +105,10 @@ function DAOS() {
                   <Button
                     onClick={() => handleJoin(idx)} 
                     className={`rounded-md py-0 text-xs border-[0.25px]  
-                      ${dao.count === dao.fractions ? 'text-white/40' : markJoined[actualIndex] ? 
-                      'text-green-300 border-green-400' :'text-white/80'}
-                      ${ dao.creator === user ? 'border-indigo-500 text-indigo-500' : 'border-gray-500' }
+                      ${dao.count === dao.fractions ? markJoined[actualIndex] ? 'text-green-300' : 'text-white/40' 
+                      : markJoined[actualIndex] ? 'text-green-300' : 'text-white/80'}
+                      ${ dao.creator === user ? 'border-indigo-500 text-indigo-500' 
+                       : markJoined[actualIndex] ? 'border-green-800' : 'border-gray-500' }
                       `}
                     style={{
                       backgroundImage: blinkingButtons[actualIndex]
@@ -117,9 +118,10 @@ function DAOS() {
                     disabled={markJoined[actualIndex] || dao.count === dao.fractions || dao.creator === user}
                   >
                     {dao.count === dao.fractions 
-                      ? 'Full'
+                      ? markJoined[actualIndex] 
+                      ? 'joined' : 'full'
                       : markJoined[actualIndex]
-                      ? 'joned'
+                      ? 'joined'
                       : dao.creator === user
                       ? 'Yours'
                       : 'Join'
