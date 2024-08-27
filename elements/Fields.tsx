@@ -93,7 +93,7 @@ function Fields() {
 
     return (
         <fieldset className='flex flex-col space-y-0'>
-            <legend className='text-center text-xs mb-2'>CREATE YOUR DAO</legend>
+            <legend className='text-center text-xs mb-1'>CREATE YOUR DAO</legend>
             {renderInput('DAO Name', 'Artistic Alliance', daoName, setDaoName, errors.daoName)}
             {renderInput("Address", "Your Solana Wallet's", address, setAddress, errors.address)}
             {renderInput('Fractions', 'Total Number of Shares', fractions, setFractions, errors.fractions)}
