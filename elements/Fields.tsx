@@ -81,7 +81,7 @@ function Fields() {
                 border-[0.25px] border-gray-600'
                 style={{
                     backgroundImage: 'linear-gradient(180deg, rgba(50, 50, 80, 0.5) 100%, rgba(10,1,1,0.35) 0%)',
-                    width: '300px'
+                    width: '250px'
                 }}
                 placeholder={placeholder}
                 type='text'
@@ -92,8 +92,8 @@ function Fields() {
     );
 
     return (
-        <fieldset className='flex flex-col space-y-1'>
-            <legend className='text-center text-xs mb-1'>CREATE YOUR DAO</legend>
+        <fieldset className='flex flex-col space-y-0'>
+            <legend className='text-center text-xs mb-2'>CREATE YOUR DAO</legend>
             {renderInput('DAO Name', 'Artistic Alliance', daoName, setDaoName, errors.daoName)}
             {renderInput("Address", "Your Solana Wallet's", address, setAddress, errors.address)}
             {renderInput('Fractions', 'Total Number of Shares', fractions, setFractions, errors.fractions)}
@@ -102,7 +102,7 @@ function Fields() {
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
             >
-                <Button className='border-[0.25px] border-orange-900 text-center px-8'
+                <Button className='border-[0.25px] border-orange-900 text-center px-8 mt-1.5'
                     onClick={handleCreate}
                     style={{
                         backgroundImage: isHovered
