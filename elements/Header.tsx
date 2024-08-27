@@ -7,8 +7,7 @@ import { CanvasInterface, CanvasClient } from '@dscvr-one/canvas-client-sdk';
 
 function Header() {
   const [isSliderOpen, setIsSliderOpen] = useState(false);
-  const { view, setView } = useDAO();
-  const [user, setUser] = useState<string | undefined>('');
+  const { view, setView, user, setUser} = useDAO();
 
   useEffect(() => {
         if(view !== "content" && isSliderOpen){
@@ -28,7 +27,7 @@ function Header() {
       try {
         const response = await canvasClient.ready();
         if (response) {
-          setUser(response.untrusted.user?.username);
+          setUser(response.untrusted.user?.username ?? "");
         }
       } catch (error) {
         console.error('Error during Canvas client initialization:', error);

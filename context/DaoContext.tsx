@@ -14,6 +14,8 @@ interface DaoContextProps {
     setAsset: (asset: string | "") => void;
     view: string;
     setView: (view: string | "") => void;
+    user: string | undefined;
+    setUser: (view: string | "") => void;
   }
 
 export const DaoContext = createContext<DaoContextProps>({
@@ -28,7 +30,9 @@ export const DaoContext = createContext<DaoContextProps>({
   asset: "NFTimage",
   setAsset: () => {},
   view: "content",
-  setView: () => {}
+  setView: () => {},
+  user: "DSCVRUSR",
+  setUser: () => {}
 });
 
 interface DaoProviderProps {
@@ -42,6 +46,7 @@ export const DaoProvider: React.FC<DaoProviderProps> = ({ children }) => {
     const [picked, setPicked] = useState<boolean>(false);
     const [asset, setAsset] = useState<string>("NFTimage");
     const [view, setView] = useState<string>("content");
+    const [user, setUser] = useState<string | undefined>('DSCVRUSR');
   
     return (
       <DaoContext.Provider value={{ 
@@ -50,7 +55,8 @@ export const DaoProvider: React.FC<DaoProviderProps> = ({ children }) => {
           created, setCreated, 
           picked, setPicked,
           asset, setAsset,
-          view, setView
+          view, setView,
+          user, setUser
         }}
       >
         {children}
