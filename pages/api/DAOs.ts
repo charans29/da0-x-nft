@@ -25,7 +25,7 @@ const DAOs: DAO[] = [
         creator: "admin1",
         members: [
             {
-                name: "admin1",
+                name: "admin11",
                 address: "0xCreatorAddress"
             },
         ]
@@ -40,11 +40,11 @@ const DAOs: DAO[] = [
         creator: "admin2",
         members: [
             {
-                name: "admin2",
+                name: "admin21",
                 address: "0xCreatorAddress"
             },
             {
-                name: "admin2",
+                name: "admin22",
                 address: "0xCreatorAddress"
             },
         ]
@@ -59,19 +59,19 @@ const DAOs: DAO[] = [
         creator: "admin3",
         members: [
             {
-                name: "admin3",
+                name: "admin31",
                 address: "0xCreatorAddress"
             },
             {
-                name: "admin3",
+                name: "admin32",
                 address: "0xCreatorAddress"
             },
             {
-                name: "admin3",
+                name: "admin33",
                 address: "0xCreatorAddress"
             },
             {
-                name: "admin3",
+                name: "admin34",
                 address: "0xCreatorAddress"
             }
         ]
@@ -86,15 +86,15 @@ const DAOs: DAO[] = [
         creator: "admin4",
         members: [
             {
-                name: "admin4",
+                name: "admin41",
                 address: "0xCreatorAddress"
             },
             {
-                name: "admin4",
+                name: "admin42",
                 address: "0xCreatorAddress"
             },
             {
-                name: "admin4",
+                name: "admin43",
                 address: "0xCreatorAddress"
             },
             
