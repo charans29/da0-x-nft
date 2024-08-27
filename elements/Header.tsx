@@ -29,7 +29,6 @@ function Header() {
         const response = await canvasClient.ready();
         if (response) {
           setUser(response.untrusted.user?.username);
-          const content = response.untrusted.content; 
         }
       } catch (error) {
         console.error('Error during Canvas client initialization:', error);

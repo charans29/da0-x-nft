@@ -23,6 +23,10 @@ function Fields() {
     };
 
     const handleCreate = () => {
+        if (!daoName || !address || !fractions || !share) {
+            alert("Please fill in all the fields before creating the DAO.");
+            return;
+        }
         const newDAO: DAO = {
             DAOname: daoName,
             address: address,
@@ -84,6 +88,7 @@ function Fields() {
             type='text'
             value={fractions}
             onChange={(e) => setFractions(e.target.value)}
+            required
         ></input>
         <label className='items-start font-sans text-xs'>Your Share</label>
         <input className='rounded bg-transparent focus:outline-none text-xs p-1.5 text-white font-thin
