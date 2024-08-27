@@ -85,39 +85,43 @@ function DAOS() {
             scrollbarWidth: 'none'
           }}
         >
-          {DAOs.slice().reverse().map((nft, idx) => {
+          {DAOs.slice().reverse().map((dao, idx) => {
             const actualIndex = DAOs.length - 1 - idx;
             return (
               <div key={idx} className='flex flex-col space-y-1.5 min-w-[180px]'>
                 <img className='cursor-pointer'
-                  src={nft.asset}
+                  src={dao.asset}
                   style={{height:'220px', width:'180px', borderRadius:'10px'}}
                   onClick={() => handleJoin(idx)}
                 />
                 <div className='flex flex-row justify-between'>
                   <div className='text-start font-mono text-xs'>
-                    {nft.count === nft.fractions 
+                    {dao.count === dao.fractions 
                       ? <RiDoorClosedFill className='fill-red-600'/>
                       : <RiDoorOpenFill className='fill-green-600'/>
                     }
-                    {nft.count}/{nft.fractions}
+                    {dao.count}/{dao.fractions}
                   </div>
                   <Button
                     onClick={() => handleJoin(idx)} 
-                    className={`rounded-md py-0 text-xs border-[0.25px] border-gray-500 ${
-                      nft.count === nft.fractions ? 'text-white/40' : markJoined[actualIndex] ? 'text-green-300 border-green-400' :'text-white/80'
-                    }`}
+                    className={`rounded-md py-0 text-xs border-[0.25px]  
+                      ${dao.count === dao.fractions ? 'text-white/40' : markJoined[actualIndex] ? 
+                      'text-green-300 border-green-400' :'text-white/80'}
+                      ${ dao.creator === user ? 'border-indigo-500 text-indigo-500' : 'border-gray-500' }
+                      `}
                     style={{
                       backgroundImage: blinkingButtons[actualIndex]
                       ? 'linear-gradient(135deg,#1e1e20,#0e0e11 122%)'
                       : 'linear-gradient(135deg,#1e1e20,#0e0e11 2%)'
                     }}
-                    disabled={markJoined[actualIndex] || nft.count === nft.fractions}
+                    disabled={markJoined[actualIndex] || dao.count === dao.fractions || dao.creator === user}
                   >
-                    {nft.count === nft.fractions 
+                    {dao.count === dao.fractions 
                       ? 'Full'
                       : markJoined[actualIndex]
                       ? 'joned'
+                      : dao.creator === user
+                      ? 'Yours'
                       : 'Join'
                     }
                   </Button>

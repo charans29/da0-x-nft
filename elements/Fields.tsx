@@ -10,7 +10,7 @@ function Fields() {
     const [fractions, setFractions] = useState('');
     const [share, setShare] = useState('');
     const [isHovered, setIsHovered] = useState(false);
-    const { nft, setCreated } = useDAO();
+    const { nft, setCreated, user } = useDAO();
 
     const [errors, setErrors] = useState({
         daoName: '',
@@ -53,7 +53,7 @@ function Fields() {
             fractions: parseInt(fractions) || 0,
             share: parseInt(share) || 0,
             count: 1,
-            creator: "",
+            creator: user ?? "DSCVRUSR",
             members: [
                 {
                     name: "",
