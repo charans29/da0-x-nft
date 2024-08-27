@@ -12,19 +12,19 @@ function Nft() {
             }}
         />
         <div className='flex flex-col justify-end'>
-            <text className='text-xs font-mono'>
+            <text className='text-xs font-mono text-white/40'>
                 Name:
                 <div className='ml-1 text-purple-300'>
                     {nft?.name}
                 </div>
             </text>
-            <text className='text-xs font-mono'>
+            <text className='text-xs font-mono text-white/40'>
                 Price:
                 <div className='ml-1 text-green-300'>
                     {nft?.floorPrice}
                 </div>
             </text>
-            <text className='text-xs font-mono'>
+            <text className='text-xs font-mono text-white/40'>
                 Volume:
                 <div className='ml-1 text-blue-300'>
                     {nft?.volumeAll}
