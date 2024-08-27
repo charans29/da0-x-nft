@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import DAOs, { Member } from './api/DAOs';
 import { AiOutlineCaretLeft, AiOutlineCaretRight } from "react-icons/ai";
 import { RiDoorOpenFill, RiDoorClosedFill } from "react-icons/ri";
@@ -12,11 +12,12 @@ function DAOS() {
   const [selectedDaoIdx, setSelectedDaoIdx] = useState<number | null>(null);
   const [BlinkEnter, setBlinkEnter] = useState(false);
   const [Address, setAddress] = useState("");
-  const { picked, setPicked, setAsset } = useDAO();
+  const { picked, setPicked, setAsset, user } = useDAO();
+  const [markJoined, setMarkJoined] = useState(Array(DAOs.length).fill(false));
 
   const handleJoin = (idx: number) => {
     const actualIndex = DAOs.length - 1 - idx;
-    console.log("Actual Index:", actualIndex);
+    console.log("Actual Index:", actualIndex, "DAOS LENGTH:", DAOs.length, "idx:", idx);
 
     setBlinkingButtons(prev => ({ ...prev, [actualIndex]: true }));
     setTimeout(() => {
@@ -27,9 +28,20 @@ function DAOS() {
     }, 300);
   };
 
+  const markJoin = (idx: number) => {
+    setMarkJoined(prev => ({ ...prev, [idx]: true }));
+  }
+
+  useEffect(() => {
+    const updatedMarkJoined = DAOs.map(dao => {
+      return dao.members.some(member => member.name === user);
+    });
+    setMarkJoined(updatedMarkJoined);
+  }, [user]);
+
   const handleEnter = (idx: number) => {
     const newMember: Member = {
-      name: "",
+      name: user ?? "DSCVUSR",
       address: Address
     };
     DAOs[idx].members.push(newMember);
@@ -45,6 +57,7 @@ function DAOS() {
     }, 500);
     setTimeout(() => {
       setPicked(false);
+      markJoin(idx);
       setSelectedDaoIdx(null);
     }, 5000);
   };
@@ -92,17 +105,19 @@ function DAOS() {
                   <Button
                     onClick={() => handleJoin(idx)} 
                     className={`rounded-md py-0 text-xs border-[0.25px] border-gray-500 ${
-                      nft.count === nft.fractions ? 'text-white/40' : 'text-white/80'
+                      nft.count === nft.fractions ? 'text-white/40' : markJoined[actualIndex] ? 'text-green-300 border-green-400' :'text-white/80'
                     }`}
                     style={{
                       backgroundImage: blinkingButtons[actualIndex]
                       ? 'linear-gradient(135deg,#1e1e20,#0e0e11 122%)'
                       : 'linear-gradient(135deg,#1e1e20,#0e0e11 2%)'
                     }}
-                    disabled={nft.count === nft.fractions}
+                    disabled={markJoined[actualIndex] || nft.count === nft.fractions}
                   >
                     {nft.count === nft.fractions 
                       ? 'Full'
+                      : markJoined[actualIndex]
+                      ? 'joned'
                       : 'Join'
                     }
                   </Button>
