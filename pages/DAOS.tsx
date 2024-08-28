@@ -88,7 +88,7 @@ function DAOS() {
           {DAOs.slice().reverse().map((dao, idx) => {
             const actualIndex = DAOs.length - 1 - idx;
             return (
-              <div key={idx} className='flex flex-col space-y-1.5 min-w-[180px]'>
+              <div key={idx} className='flex flex-col space-y-1.5 min-w-[150px]'>
                 <img className='cursor-pointer'
                   src={dao.asset}
                   style={{height:'180px', width:'150px', borderRadius:'10px'}}
