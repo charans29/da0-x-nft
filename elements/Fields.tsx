@@ -77,7 +77,7 @@ function Fields() {
                 {error && <span className="text-red-800 text-xs font-extralight">* {error}</span>}
             </span>
             <input
-                className='rounded bg-transparent focus:outline-none text-xs p-1.5 text-white font-thin 
+                className='rounded bg-transparent focus:outline-none text-xs p-1 text-white font-thin 
                 border-[0.25px] border-gray-600'
                 style={{
                     backgroundImage: 'linear-gradient(180deg, rgba(50, 50, 80, 0.5) 100%, rgba(10,1,1,0.35) 0%)',
