@@ -6,9 +6,13 @@ import DAOS from '@/pages/DAOS';
 import React, { useEffect } from 'react';
 
 function Body() {
-  const { view, setView } = useDAO();
+  const { view, setView, created, setSelected, setCreated } = useDAO();
 
   useEffect(() => {
+    if(created && view === "dao"){
+      setCreated(false)
+      setSelected(false)
+    }
   }, [view]);
 
   const handleMakeDAO = () => {
