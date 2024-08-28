@@ -6,9 +6,9 @@ function DaoCreated() {
   const { nft } = useDAO();
   const imageSrc = nft?.image || '';
   return (
-    <div className='w-full h-full -mt-5'>
+    <div className='w-full h-full -mt-10'>
       <Confetti>
-        <div className='relative inset-x-[300px] inset-y-[100px]'>
+        <div className='relative inset-x-[250px] inset-y-[100px]'>
           <img 
             src={ imageSrc }
             className="h-28 w-28 rounded-lg cursor-pointer"
