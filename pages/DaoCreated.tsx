@@ -14,7 +14,7 @@ function DaoCreated() {
             className="h-28 w-28 rounded-lg cursor-pointer"
           />
         </div>
-        <div className="text-white-500 text-cyan-200 font-light text-center text-xs -mt-11">
+        <div className="text-white-500 text-cyan-200 font-light text-center text-sm -mt-11">
           Woohoo..! YOU Created
         </div>
         <div className="text-white-500 text-cyan-200 font-light mt-36 text-xs text-center">

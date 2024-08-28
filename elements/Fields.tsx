@@ -81,7 +81,7 @@ function Fields() {
                 border-[0.25px] border-gray-600'
                 style={{
                     backgroundImage: 'linear-gradient(180deg, rgba(50, 50, 80, 0.5) 100%, rgba(10,1,1,0.35) 0%)',
-                    width: '250px'
+                    width: '230px'
                 }}
                 placeholder={placeholder}
                 type='text'
@@ -98,11 +98,11 @@ function Fields() {
             {renderInput("Address", "Your Solana Wallet's", address, setAddress, errors.address)}
             {renderInput('Fractions', 'Total Number of Shares', fractions, setFractions, errors.fractions)}
             {renderInput('Your Share', 'SOL you willing to invest', share, setShare, errors.share)}
-            <div className='flex justify-center w-full pt-1.5'
+            <div className='flex justify-center w-full'
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
             >
-                <Button className='border-[0.25px] border-orange-900 text-center px-5 mt-1 text-xs cursor-pointer'
+                <Button className='border-[0.25px] border-orange-900 text-center px-5 mt-1.5 text-xs cursor-pointer font-thin'
                     onClick={handleCreate}
                     style={{
                         backgroundImage: isHovered

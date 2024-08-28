@@ -20,7 +20,7 @@ function DAO() {
     >
       { isSelected ?
         <>
-          <text className='text-md text-blue-600 font-semibold font-sans pt-3'>
+          <text className='text-sm text-blue-600 font-semibold font-sans pt-3'>
             NFT FOR YOUR DAO
           </text>
           <DaoForm Dao={created}/>
@@ -28,7 +28,7 @@ function DAO() {
         </>
         :
         <>
-          <text className='text-md text-blue-600 font-semibold font-sans pt-3'>
+          <text className='text-sm text-blue-600 font-semibold font-sans pt-3'>
             BROWSE NFT&apos;s FOR YOUR DAO
           </text>
           <ParallaxScroll nfts={NFTs}/>

@@ -77,7 +77,7 @@ function DAOS() {
       CONGRATS ON YOUR PICK
     </p><DaoSelected/></>
       : <>
-          <p className='text-md text-blue-600 font-semibold font-sans pt-3'>
+          <p className='text-sm text-blue-600 font-semibold font-sans pt-3'>
             JOIN A DAO NFT U LIKE
           </p>
           <div className='flex flex-row space-x-3.5 overflow-x-auto px-24'
@@ -133,8 +133,8 @@ function DAOS() {
           })}
         </div>
         <div className='flex justify-center pb-3 space-x-2'>
-          <AiOutlineCaretLeft className='bg-gray-800 rounded-full -p-3 cursor-pointer' style={{color:'gray', fontSize:"15px"}}/>
-          <AiOutlineCaretRight className='bg-gray-800 rounded-full -p-3 cursor-pointer' style={{color:'gray', fontSize:"15px"}}/>
+          <AiOutlineCaretLeft className='bg-gray-800 rounded-full -p-3 cursor-pointer' style={{color:'gray', fontSize:"10px"}}/>
+          <AiOutlineCaretRight className='bg-gray-800 rounded-full -p-3 cursor-pointer' style={{color:'gray', fontSize:"10px"}}/>
         </div>
         {
           selectedDaoIdx !== null && 
