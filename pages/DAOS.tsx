@@ -91,7 +91,7 @@ function DAOS() {
               <div key={idx} className='flex flex-col space-y-1.5 min-w-[180px]'>
                 <img className='cursor-pointer'
                   src={dao.asset}
-                  style={{height:'220px', width:'180px', borderRadius:'10px'}}
+                  style={{height:'200px', width:'180px', borderRadius:'10px'}}
                   onClick={() => handleJoin(idx)}
                 />
                 <div className='flex flex-row justify-between'>
