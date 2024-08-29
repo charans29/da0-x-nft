@@ -21,20 +21,25 @@ function Header() {
   };
 
   useEffect(() => {
-    const canvasClient = new CanvasClient();
+    if (typeof CanvasClient !== 'undefined') {
+      const canvasClient = new CanvasClient();
 
-    async function initializeCanvasClient() {
-      try {
-        const response = await canvasClient.ready();
-        if (response) {
-          setUser(response.untrusted.user?.username ?? "");
+      const initializeCanvasClient = async () =>  {
+        try {
+          const response = await canvasClient.ready();
+          if (response) {
+            setUser(response.untrusted.user?.username ?? "");
+          }
+        } catch (error) {
+          console.error('Error during Canvas client initialization:', error);
         }
-      } catch (error) {
-        console.error('Error during Canvas client initialization:', error);
       }
-    }
 
-    initializeCanvasClient();
+      initializeCanvasClient();
+    } else {
+      console.warn('CanvasClient is not available in this environment');
+      setUser('Guest');
+    }
   }, []);
 
   return (
