@@ -10,7 +10,7 @@ function DAO() {
 
   return (
     <div
-      className={`h-full w-10/12 rounded-xl flex flex-col justify-between items-center pb-3 
+      className={`h-full w-10/12 rounded-xl flex flex-col justify-between items-center pb-2 
       border-[0.25px] ${created ? 'border-blue-600' : 'border-red-950'} text-white/60 -mt-5`}
       style={{
         backgroundImage: created

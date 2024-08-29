@@ -102,7 +102,7 @@ function Fields() {
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
             >
-                <Button className='border-[0.25px] border-orange-900 text-center px-5 mt-1.5 text-xs cursor-pointer font-thin'
+                <Button className='border-[0.25px] border-orange-900 text-center px-3 py-0.5 mt-1.5 text-xs cursor-pointer font-thin'
                     onClick={handleCreate}
                     style={{
                         backgroundImage: isHovered
