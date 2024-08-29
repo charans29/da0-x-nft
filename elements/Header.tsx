@@ -36,9 +36,7 @@ function Header() {
       }
 
       initializeCanvasClient();
-    } else {
-      setUser("Guest");
-    }
+    } 
   }, [setUser]);
 
   return (

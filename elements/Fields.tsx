@@ -73,7 +73,7 @@ function Fields() {
     const renderInput = (label:any, placeholder:any, value:any, setValue:any, error:any) => (
         <>
             <span>
-                <label className='items-start font-sans text-xs'>{label}</label>
+                <label className='items-start font-thin text-xs'>{label}</label>
                 {error && <span className="text-red-800 text-xs font-extralight">* {error}</span>}
             </span>
             <input
@@ -92,7 +92,7 @@ function Fields() {
     );
 
     return (
-        <fieldset className='flex flex-col space-y-0'>
+        <fieldset className='flex flex-col'>
             <legend className='text-center text-xs mb-1'>CREATE YOUR DAO</legend>
             {renderInput('DAO Name', 'Artistic Alliance', daoName, setDaoName, errors.daoName)}
             {renderInput("Address", "Your Solana Wallet's", address, setAddress, errors.address)}

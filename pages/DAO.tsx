@@ -20,7 +20,7 @@ function DAO() {
     >
       { isSelected ?
         <>
-          <text className='text-sm text-blue-600 font-semibold font-sans pt-3'>
+          <text className='text-sm text-blue-600 font-semibold font-sans mt-3'>
             NFT FOR YOUR DAO
           </text>
           <DaoForm Dao={created}/>
