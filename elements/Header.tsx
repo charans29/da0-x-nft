@@ -21,7 +21,7 @@ function Header() {
   };
 
   useEffect(() => {
-    if (typeof CanvasClient !== 'undefined') {
+    if (window.self !== window.top) {
       const canvasClient = new CanvasClient();
 
       const initializeCanvasClient = async () =>  {
@@ -37,10 +37,9 @@ function Header() {
 
       initializeCanvasClient();
     } else {
-      console.warn('CanvasClient is not available in this environment');
-      setUser('Guest');
+      setUser("Guest");
     }
-  }, []);
+  }, [setUser]);
 
   return (
       <div className='flex flex-row justify-between p-3 m-5'>
