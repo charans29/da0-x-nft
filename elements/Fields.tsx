@@ -73,11 +73,11 @@ function Fields() {
     const renderInput = (label:any, placeholder:any, value:any, setValue:any, error:any) => (
         <>
             <span>
-                <label className='items-start font-thin text-xs'>{label}</label>
+                <label className='items-start font-extralight text-xs'>{label}</label>
                 {error && <span className="text-red-800 text-xs font-extralight">* {error}</span>}
             </span>
             <input
-                className='rounded bg-transparent focus:outline-none text-xs p-1 text-white font-thin 
+                className='rounded bg-transparent focus:outline-none text-xs p-[3.5px] text-white font-thin 
                 border-[0.25px] border-gray-600'
                 style={{
                     backgroundImage: 'linear-gradient(180deg, rgba(50, 50, 80, 0.5) 100%, rgba(10,1,1,0.35) 0%)',
@@ -92,8 +92,8 @@ function Fields() {
     );
 
     return (
-        <fieldset className='flex flex-col'>
-            <legend className='text-center text-xs mb-1'>CREATE YOUR DAO</legend>
+        <fieldset className='flex flex-col -mt-1 space-y-0'>
+            <legend className='text-center text-xs mb-0.5 font-light'>CREATE YOUR DAO</legend>
             {renderInput('DAO Name', 'Artistic Alliance', daoName, setDaoName, errors.daoName)}
             {renderInput("Address", "Your Solana Wallet's", address, setAddress, errors.address)}
             {renderInput('Fractions', 'Total Number of Shares', fractions, setFractions, errors.fractions)}
