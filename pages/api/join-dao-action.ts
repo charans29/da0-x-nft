@@ -5,10 +5,10 @@ import {
 } from "@solana/actions";
 import DAOs from './DAOs';
 
-export default async function handler(
+export const GET = (
   req: NextApiRequest,
   res: NextApiResponse
-) {
+) => {
   const headers = createActionHeaders();
   const { id } = req.query;
   const daoIndex = parseInt(id as string);
@@ -31,11 +31,9 @@ export default async function handler(
     },
   };
 
-//   for (const [key, value] of Object.entries(headers)) {
-//     res.setHeader(key, value);
-//   }
-
   res.status(200).json(payload), {
     headers,
   };
 }
+
+export const OPTIONS = GET;
