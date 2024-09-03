@@ -5,7 +5,7 @@ export const GET = async () => {
     rules: [
       {
         pathPattern: "/**",
-        apiPath: "/api/join-dao-action",
+        apiPath: "/api/action",
       },
     ],
   };

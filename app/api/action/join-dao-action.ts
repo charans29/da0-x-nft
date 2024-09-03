@@ -1,10 +1,11 @@
+import DAOs from "@/pages/api/DAOs";
 import {
     ActionGetResponse,
     ACTIONS_CORS_HEADERS,
   } from "@solana/actions";
-  import DAOs from './DAOs';
+
   
-  export const GET = (request: Request) => {
+  export async function GET(request: Request){
     const requestURL = new URL(request.url);
     const id = requestURL.searchParams.get('id');
     const daoIndex = parseInt(id ?? "");
