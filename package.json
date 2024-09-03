@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@dscvr-one/canvas-client-sdk": "^1.1.0",
+    "@solana/actions": "^1.6.4",
     "canvas-confetti": "^1.9.3",
     "clsx": "^2.1.1",
     "framer-motion": "^11.3.27",
