@@ -6,6 +6,7 @@ import Button from '@/components/Button';
 import JoinDao from './JoinDao';
 import { useDAO } from '@/context/DaoContext';
 import DaoSelected from './DaoSelected';
+import Blink from '@/components/Blink';
 
 function DAOS() {
   const [blinkingButtons, setBlinkingButtons] = useState(Array(DAOs.length).fill(false));
@@ -14,6 +15,7 @@ function DAOS() {
   const [Address, setAddress] = useState("");
   const { picked, setPicked, setAsset, user } = useDAO();
   const [markJoined, setMarkJoined] = useState(Array(DAOs.length).fill(false));
+  const [blink, setBlink] = useState(false)
 
   const handleJoin = (idx: number) => {
     const actualIndex = DAOs.length - 1 - idx;
@@ -62,6 +64,14 @@ function DAOS() {
     }, 5000);
   };
 
+  const exportLink = (idx:number) => {
+    const actualIndex = DAOs.length - 1 - idx;
+    setBlink(true)
+    setTimeout(() => {
+      setSelectedDaoIdx(actualIndex);
+    }, 300);
+  }
+
   return (
     <div 
       className={`h-full w-10/12 rounded-xl flex flex-col ${ picked ? 'justify-center border-green-800' : 'justify-between border-red-950'} text-center border-[0.25px]
@@ -95,12 +105,15 @@ function DAOS() {
                   onClick={() => handleJoin(idx)}
                 />
                 <div className='flex flex-row justify-between'>
-                  <div className='text-start font-mono text-xs'>
-                    {dao.count === dao.fractions 
-                      ? <RiDoorClosedFill className='fill-red-600'/>
-                      : <RiDoorOpenFill className='fill-green-600'/>
-                    }
-                    {dao.count}/{dao.fractions}
+                  <div className='text-start font-mono text-xs flex space-x-2 items-center'>
+                    <div>
+                      {dao.count === dao.fractions 
+                        ? <RiDoorClosedFill className='fill-red-600'/>
+                        : <RiDoorOpenFill className='fill-green-600'/>
+                      }
+                      {dao.count}/{dao.fractions}
+                    </div>
+                    <Blink avail={ markJoined[actualIndex] || dao.creator === user } onClick={()=>{exportLink(idx)}} />
                   </div>
                   <Button
                     onClick={() => handleJoin(idx)} 
@@ -138,32 +151,51 @@ function DAOS() {
         </div>
         {
           selectedDaoIdx !== null && 
-            <JoinDao>
-              <label className='items-start font-sans text-xs scale-y-75'>Address: </label>
-              <input className='rounded bg-transparent focus:outline-none text-xs p-1.5 m-1.5 text-white/90 font-thin
-                  border-[0.25px] border-gray-600'
+            <JoinDao blink={blink}>
+              {blink
+              ?
+              <>
+                <label className='items-start font-mono text-xs scale-y-75'>Copy your DAO blink URL: </label><br/>
+                <input className='rounded bg-transparent focus:outline-none text-xs px-1.5 mb-1.5 text-white/90 font-thin
+                    border-[0.25px] border-gray-600 resize-none'
+                    style={{
+                        backgroundImage: `linear-gradient(180deg, rgba(50, 50, 50, 0.5) 100%, rgba(10,1,1,0.35) 0%)`,
+                        width:`440px`,
+                        height:`30px`
+                    }}
+                    value='https://example.domain/?action=solana-action%3Ahttps%3A%2F%2Factions.alice.com%2Fdonate'
+                    readOnly
+                /><br/>
+              </>
+              :
+              <>
+                <label className='items-start font-sans text-xs scale-y-75'>Address: </label>
+                <input className='rounded bg-transparent focus:outline-none text-xs p-1.5 m-1.5 text-white/90 font-thin
+                    border-[0.25px] border-gray-600'
+                    style={{
+                        backgroundImage: `linear-gradient(180deg, rgba(50, 50, 50, 0.5) 100%, rgba(10,1,1,0.35) 0%)`,
+                        width:`350px`
+                    }}
+                    placeholder='Your SOL Wallet Address'
+                    type='text'
+                    value={Address}
+                    onChange={(e) => setAddress(e.target.value)}
+                ></input><br/>
+                <Button onClick={()=>{handleEnter(selectedDaoIdx)}} 
+                  className='px-6 py-0.5 mb-2 border-purple-100 font-mono text-xs text-white'
                   style={{
-                      backgroundImage: `linear-gradient(180deg, rgba(50, 50, 50, 0.5) 100%, rgba(10,1,1,0.35) 0%)`,
-                      width:`350px`
+                    backgroundImage: BlinkEnter
+                    ? `linear-gradient(300deg, rgba(88,4,5,1) 50%, rgba(130,110,118,0.35) 120%)`
+                    : `linear-gradient(300deg, rgba(88,4,5,0.5) 50%, rgba(130,110,118,0.35) 120%)`
                   }}
-                  placeholder='Your SOL Wallet Address'
-                  type='text'
-                  value={Address}
-                  onChange={(e) => setAddress(e.target.value)}
-              ></input><br/>
-              <Button onClick={()=>{handleEnter(selectedDaoIdx)}} 
-                className='px-6 py-0.5 mb-2 border-purple-100 font-mono text-xs text-white'
-                style={{
-                  backgroundImage: BlinkEnter
-                  ? `linear-gradient(300deg, rgba(88,4,5,1) 50%, rgba(130,110,118,0.35) 120%)`
-                  : `linear-gradient(300deg, rgba(88,4,5,0.5) 50%, rgba(130,110,118,0.35) 120%)`
-                }}
-                >
-                  enter.
-              </Button>
+                  >
+                    enter.
+                </Button>
+              </>
+              }
               <button
                 className="fixed top-10 right-4 z-[120] h-5 w-5 text-red-500 text-sm bg-gray-700 rounded-full"
-                onClick={() => setSelectedDaoIdx(null)}
+                onClick={() => {setSelectedDaoIdx(null); if(blink){setBlink(false)}}}
               >
                 X
               </button>
