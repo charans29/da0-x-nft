@@ -31,9 +31,11 @@ export default async function handler(
     },
   };
 
-  for (const [key, value] of Object.entries(headers)) {
-    res.setHeader(key, value);
-  }
+//   for (const [key, value] of Object.entries(headers)) {
+//     res.setHeader(key, value);
+//   }
 
-  res.status(200).json(payload);
+  res.status(200).json(payload), {
+    headers,
+  };
 }
