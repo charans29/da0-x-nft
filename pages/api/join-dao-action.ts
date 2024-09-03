@@ -3,13 +3,17 @@ import {
   createActionHeaders,
   ActionGetResponse,
 } from "@solana/actions";
+import DAOs from './DAOs';
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   const headers = createActionHeaders();
-  const { asset, count, fractions } = req.query;
+  const { id } = req.query;
+  const daoIndex = parseInt(id as string);
+  const dao = DAOs[daoIndex];
+  const { count, fractions, asset } = dao;
 
   const payload: ActionGetResponse = {
     type: "action",
