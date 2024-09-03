@@ -31,7 +31,7 @@ export const GET = (
     },
   };
 
-  res.status(200).json(payload), {
+  return res.status(200).json(payload), {
     headers,
   };
 }
