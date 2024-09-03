@@ -1,15 +1,25 @@
-
 import { createActionHeaders, type ActionsJson } from "@solana/actions";
+import type { NextApiRequest, NextApiResponse } from 'next';
 
-export const GET = async () => {
+export default function handler(
+  req: NextApiRequest,
+  res: NextApiResponse<ActionsJson>
+) {
+  res.setHeader('Content-Type', 'application/json');
+
+  const headers = createActionHeaders();
+  for (const key in headers) {
+    if (headers.hasOwnProperty(key)) {
+      res.setHeader(key, headers[key]);
+    }
+  }
+
   const payload: ActionsJson = {
     rules: [
-      // map all root level routes to an action
       {
         pathPattern: "/*",
         apiPath: "/pages/api/*",
       },
-      // idempotent rule as the fallback
       {
         pathPattern: "/pages/api/**",
         apiPath: "/pages/api/**",
@@ -17,9 +27,5 @@ export const GET = async () => {
     ],
   };
 
-  return Response.json(payload, {
-    headers: createActionHeaders(),
-  });
-};
-
-export const OPTIONS = GET;
+  res.status(200).json(payload);
+}
