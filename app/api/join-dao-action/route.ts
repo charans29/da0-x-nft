@@ -1,40 +1,41 @@
 import DAOs from "@/pages/api/DAOs";
 import {
     ActionGetResponse,
-    ActionPostResponse,
     ACTIONS_CORS_HEADERS,
   } from "@solana/actions";
 import { clusterApiUrl, Connection, Keypair, PublicKey, SystemProgram, Transaction } from "@solana/web3.js";
 
   
-  export async function GET(request: Request){
-    const requestURL = new URL(request.url);
-    const id = requestURL.searchParams.get('id');
-    const daoIndex = parseInt(id ?? "");
-    const dao = DAOs[daoIndex];
-    const { count, fractions, asset } = dao;
-    const iconURL = new URL(asset ?? "", requestURL.origin);
-  
-    const payload: ActionGetResponse = {
+export async function GET(request: Request) {
+  const requestURL = new URL(request.url);
+  const id = requestURL.searchParams.get('id');
+  const daoIndex = parseInt(id ?? "");
+  const dao = DAOs[daoIndex];
+  const { count, fractions, asset } = dao;
+  const iconURL = new URL(asset ?? "", requestURL.origin);
+
+  const encodedRequestURL = encodeURIComponent(requestURL.toString());
+  const dscvrBlinkUrl = `https://dscvr-blinks.vercel.app/?action=${encodedRequestURL}`;
+
+  const payload: ActionGetResponse = {
       icon: iconURL.toString(),
       description: `Join this DAO. Current members: ${count}/${fractions}`,
       title: "Join DAO",
       label: "Join DAO",
       links: {
-        actions: [
-          {
-            label: "Join",
-            href: request.url
-          },
-        ],
+          actions: [
+              {
+                  label: "Join",
+                  href: dscvrBlinkUrl // Use the encoded URL here
+              },
+          ],
       },
-    };
-  
-    const response = Response.json(payload, {headers: ACTIONS_CORS_HEADERS})
+  };
 
-    return response
-  
-  }
+  const response = Response.json(payload, { headers: ACTIONS_CORS_HEADERS });
+
+  return response;
+}
   
   export async function POST(request: Request) {
     const requestURL = new URL(request.url);
