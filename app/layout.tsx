@@ -18,6 +18,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta name="dscvr:canvas:version" content="vNext"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="og:image" content="cover.png"></meta>
         <title>DAO&apos;s NFT</title>
       </head>
