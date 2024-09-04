@@ -69,10 +69,11 @@ function DAOS() {
     const actualIndex = DAOs.length - 1 - idx;
     const daoId = actualIndex;
     
-    const actionUrl = `https://da0-x-nft.vercel.app/api/join-dao-action?id=${daoId}`;
+    const daoActionUrl = `https://da0-x-nft.vercel.app/api/join-dao-action?id=${daoId}`;
+    const dscvrBlinkUrl = `https://dscvr-blinks.vercel.app/?action=${encodeURIComponent(daoActionUrl)}`;
   
-    setBlinkURL(actionUrl);
-    console.log(`SOLANA_BLINK_URL:`, actionUrl);
+    setBlinkURL(dscvrBlinkUrl);
+    console.log(`SOLANA_BLINK_URL:`, daoActionUrl);
 
     setBlink(true)
     setTimeout(() => {

@@ -4,36 +4,34 @@ import {
     ACTIONS_CORS_HEADERS,
   } from "@solana/actions";
   
-export async function GET(request: Request){
-  const requestURL = new URL(request.url);
-  const id = requestURL.searchParams.get('id');
-  const daoIndex = parseInt(id ?? "");
-  const dao = DAOs[daoIndex];
-  const { count, fractions, asset } = dao;
-  const iconURL = new URL(asset ?? "", requestURL.origin);
+  export async function GET(request: Request){
+    const requestURL = new URL(request.url);
+    const id = requestURL.searchParams.get('id');
+    const daoIndex = parseInt(id ?? "");
+    const dao = DAOs[daoIndex];
+    const { count, fractions, asset } = dao;
+    const iconURL = new URL(asset ?? "", requestURL.origin);
+  
+    const payload: ActionGetResponse = {
+      icon: iconURL.toString(),
+      description: `Join this DAO. Current members: ${count}/${fractions}`,
+      title: "Join DAO",
+      label: "Join DAO",
+      links: {
+        actions: [
+          {
+            label: "Join",
+            href: request.url
+          },
+        ],
+      },
+    };
+  
+    const response = Response.json(payload, {headers: ACTIONS_CORS_HEADERS})
 
-  const daoActionUrl = `https://da0-x-nft.vercel.app/api/join-dao-action?id=${daoIndex}`;
-  const dscvrBlinkUrl = `https://dscvr-blinks.vercel.app/?action=${encodeURIComponent(daoActionUrl)}`;
-
-  const payload: ActionGetResponse = {
-    icon: iconURL.toString(),
-    description: `Join this DAO. Current members: ${count}/${fractions}`,
-    title: "Join DAO",
-    label: "Join DAO",
-    links: {
-      actions: [
-        {
-          label: "Join",
-          href: dscvrBlinkUrl
-        },
-      ],
-    },
-  };
-
-  const response = Response.json(payload, {headers: ACTIONS_CORS_HEADERS});
-
-  return response;
-}
+    return response
+  
+  }
   
 export async function POST(request: Request) {
   const requestURL = new URL(request.url);
@@ -44,16 +42,11 @@ export async function POST(request: Request) {
     return new Response("Invalid DAO ID", { status: 400 });
   }
 
-  if(DAOs[daoIndex].count !== DAOs[daoIndex].fractions){
-    DAOs[daoIndex].count += 1;
-  }
+  if (DAOs[daoIndex].count !== DAOs[daoIndex].count) DAOs[daoIndex].count += 1;
 
   const dao = DAOs[daoIndex];
   const { count, fractions, asset } = dao;
   const iconURL = new URL(asset ?? "", requestURL.origin);
-
-  const daoActionUrl = `https://da0-x-nft.vercel.app/api/join-dao-action?id=${daoIndex}`;
-  const dscvrBlinkUrl = `https://dscvr-blinks.vercel.app/?action=${encodeURIComponent(daoActionUrl)}`;
 
   const payload: ActionGetResponse = {
     icon: iconURL.toString(),
@@ -64,7 +57,7 @@ export async function POST(request: Request) {
       actions: [
         {
           label: "Join",
-          href: dscvrBlinkUrl,
+          href: request.url,
         },
       ],
     },
