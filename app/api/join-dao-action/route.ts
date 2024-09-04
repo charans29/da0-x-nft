@@ -24,8 +24,8 @@ export async function GET(request: Request) {
     const payload: ActionGetResponse = {
         icon: iconURL.toString(),
         description: `NFT Value: ${assetVal} • Current members: ${count}/${fractions}`,
-        title: "Join DAO",
-        label: "Join MY DAO",
+        title: "Join MY DAO",
+        label: "Join DAO",
         links: {
             actions: [
                 {
