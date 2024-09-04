@@ -164,8 +164,8 @@ function DAOS() {
               {blink
               ?
               <>
-                <label className='items-start font-mono text-xs scale-y-75'>Copy your DAO blink URL: </label><br/>
-                <input className='rounded bg-transparent focus:outline-none text-xs px-1.5 mb-1.5 text-white/90 font-thin
+                <label className='items-start font-mono text-xs scale-y-75'>Your DAO Blink URL:</label><br/>
+                <input className='rounded bg-transparent focus:outline-none text-xs px-1.5 -mb-1.5 text-white/90 font-thin
                     border-[0.25px] border-gray-600 resize-none'
                     style={{
                         backgroundImage: `linear-gradient(180deg, rgba(50, 50, 50, 0.5) 100%, rgba(10,1,1,0.35) 0%)`,
@@ -175,6 +175,7 @@ function DAOS() {
                     value={blinkURL}
                     readOnly
                 /><br/>
+                <label className='items-start font-mono text-[10px] scale-y-0'>Share on DSCVR and invite your friends to join your DAO!</label><br/>
               </>
               :
               <>
