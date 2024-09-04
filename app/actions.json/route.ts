@@ -7,6 +7,10 @@ export const GET = async () => {
         pathPattern: "/**",
         apiPath: "/api/join-dao-action",
       },
+      {
+        pathPattern: "/api/join-dao-action/**",
+        apiPath: "/api/join-dao-action/**",
+      }
     ],
   };
 

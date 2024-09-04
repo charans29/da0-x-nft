@@ -40,7 +40,6 @@ import { clusterApiUrl, Connection, Keypair, PublicKey, SystemProgram, Transacti
     const requestURL = new URL(request.url);
     const id = requestURL.searchParams.get('id');
     const daoIndex = parseInt(id ?? "");
-
     const userPublicKey = new Keypair().publicKey;
     const treasuryPublicKeyString = 'GjMoMZJUzSf5j6jQ5CnU7vLivQYUuB5FLf1vCPhDLnYo'; // Replace with actual treasury public key
     const treasuryPublicKey = new PublicKey(treasuryPublicKeyString);
@@ -66,14 +65,17 @@ import { clusterApiUrl, Connection, Keypair, PublicKey, SystemProgram, Transacti
       DAOs[daoIndex].count += 1;
     }
 
-    const payload: ActionPostResponse = {
+    const response: ActionPostResponse = {
       transaction: serializedTx,
       message: "Done! You've joined the DAO!",
     };
 
-    const response = Response.json(payload, { headers: ACTIONS_CORS_HEADERS });
-    
-    return response
+    return new Response(JSON.stringify(response), {
+      headers: {
+        ...ACTIONS_CORS_HEADERS,
+        'Content-Type': 'application/json'
+      }
+    });
   }
 
   export async function OPTIONS(request: Request) {
