@@ -60,7 +60,7 @@ export async function POST(request: Request) {
     icon: iconURL.toString(),
     description: `Join this DAO. Current members: ${count}/${fractions}`,
     title: "Join DAO",
-    label: "Join DAO",
+    label: "Join MY DAO",
     links: {
       actions: [
         {
