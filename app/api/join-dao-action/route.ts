@@ -4,7 +4,7 @@ import {
     ActionPostResponse,
     ACTIONS_CORS_HEADERS,
   } from "@solana/actions";
-import { Transaction } from "@solana/web3.js";
+import { clusterApiUrl, Connection, Keypair, PublicKey, SystemProgram, Transaction } from "@solana/web3.js";
 
   
   export async function GET(request: Request){
@@ -40,7 +40,24 @@ import { Transaction } from "@solana/web3.js";
     const requestURL = new URL(request.url);
     const id = requestURL.searchParams.get('id');
     const daoIndex = parseInt(id ?? "");
-  
+
+    const userPublicKey = new Keypair().publicKey;
+    const treasuryPublicKeyString = 'GjMoMZJUzSf5j6jQ5CnU7vLivQYUuB5FLf1vCPhDLnYo'; // Replace with actual treasury public key
+    const treasuryPublicKey = new PublicKey(treasuryPublicKeyString);
+   
+    const tx = new Transaction().add(
+      SystemProgram.transfer({
+        fromPubkey: userPublicKey,
+        toPubkey: treasuryPublicKey,
+        lamports: 1
+      })
+    );
+
+    const serializedTx = tx.serialize({
+      requireAllSignatures: false, 
+      verifySignatures: false
+    }).toString("base64");
+
     if (isNaN(daoIndex) || !DAOs[daoIndex]) {
       return new Response("Invalid DAO ID", { status: 400 });
     }
@@ -49,14 +66,14 @@ import { Transaction } from "@solana/web3.js";
       DAOs[daoIndex].count += 1;
     }
 
-    const tx = new Transaction();
-    const serialTX = tx.serialize({requireAllSignatures: false, verifySignatures: false}).toString("base64");
-
-    const response : ActionPostResponse = {
-      transaction: serialTX,
-      message: "DOne..Done..DONE!, you joine the DAO!"
+    const payload: ActionPostResponse = {
+      transaction: serializedTx,
+      message: "Done! You've joined the DAO!",
     };
-    return Response.json(response, {headers: ACTIONS_CORS_HEADERS})
+
+    const response = Response.json(payload, { headers: ACTIONS_CORS_HEADERS });
+    
+    return response
   }
 
   export async function OPTIONS(request: Request) {
