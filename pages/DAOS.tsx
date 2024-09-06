@@ -7,6 +7,7 @@ import JoinDao from './JoinDao';
 import { useDAO } from '@/context/DaoContext';
 import DaoSelected from './DaoSelected';
 import Blink from '@/components/Blink';
+import { findNftByIdx } from '@/lib/utils';
 
 function DAOS() {
   const [blinkingButtons, setBlinkingButtons] = useState(Array(DAOs.length).fill(false));
@@ -66,10 +67,11 @@ function DAOS() {
   };
 
   const exportLink = (idx:number) => {
-    const actualIndex = DAOs.length - 1 - idx;
-    const daoId = actualIndex;
-    
-    const daoActionUrl = `https://da0-x-nft.vercel.app/api/join-dao-action?id=${daoId}`;
+    const daoIndex = DAOs.length - 1 - idx;
+    const dao = DAOs[daoIndex];
+    const { count, fractions, asset } = dao;
+    const nft_id = findNftByIdx(asset ?? "")
+    const daoActionUrl = `https://da0-x-nft.vercel.app/api/join-dao-action?nft=${nft_id}mbrs=${count}frcn=${fractions}`;
     const dscvrBlinkUrl = `https://dscvr-blinks.vercel.app/?action=${encodeURIComponent(daoActionUrl)}`;
   
     setBlinkURL(dscvrBlinkUrl);
@@ -77,7 +79,7 @@ function DAOS() {
 
     setBlink(true)
     setTimeout(() => {
-      setSelectedDaoIdx(actualIndex);
+      setSelectedDaoIdx(daoIndex);
     }, 300);
   }
 
