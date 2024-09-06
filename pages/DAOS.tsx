@@ -71,7 +71,13 @@ function DAOS() {
     const dao = DAOs[daoIndex];
     const { count, fractions, asset } = dao;
     const nft_id = findNftByIdx(asset ?? "")
-    const daoActionUrl = `https://da0-x-nft.vercel.app/api/join-dao-action?nft=${nft_id}mbrs=${count}frcn=${fractions}`;
+    const params = new URLSearchParams({
+      nft: nft_id.toString(),
+      mbrs: count.toString(),
+      frcn: fractions.toString(),
+    });
+  
+    const daoActionUrl = `https://da0-x-nft.vercel.app/api/join-dao-action?${params.toString()}`;
     const dscvrBlinkUrl = `https://dscvr-blinks.vercel.app/?action=${encodeURIComponent(daoActionUrl)}`;
   
     setBlinkURL(dscvrBlinkUrl);
