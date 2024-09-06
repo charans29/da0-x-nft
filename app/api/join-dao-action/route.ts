@@ -7,19 +7,15 @@ import {
   
  
 export async function GET(request: Request) {
-    const requestURL = new URL(request.url);
-    const actionUrlEncoded = requestURL.searchParams.get('action');
-    if (!actionUrlEncoded) {
-      return new Response('Action URL not found', { status: 400 });
-    }
-    const daoActionUrl = decodeURIComponent(actionUrlEncoded);
-    const daoActionParams = new URL(daoActionUrl).searchParams;
-    const { nft_id: idx, mbrs: count, frcn: fractions } = Object.fromEntries(daoActionParams.entries());
-    if (!idx || !count || !fractions) {
+  const requestURL = new URL(request.url);
+  const idx = requestURL.searchParams.get('nft_id');
+  const count = requestURL.searchParams.get('mbrs');
+  const fractions = requestURL.searchParams.get('frcn');
+  if (!idx || !count || !fractions) {
       return new Response('Missing required parameters', { status: 400 });
-    }
-    const assetVal = NFTs[parseInt(idx)].floorPrice;
-    const iconURL = new URL(NFTs[parseInt(idx)].image ?? "", requestURL.origin);
+  }
+  const assetVal = NFTs[parseInt(idx)].floorPrice;
+  const iconURL = new URL(NFTs[parseInt(idx)].image ?? "", requestURL.origin);
 
     const payload: ActionGetResponse = {
         icon: iconURL.toString(),

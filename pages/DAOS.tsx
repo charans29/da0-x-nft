@@ -72,7 +72,7 @@ function DAOS() {
     const { count, fractions, asset } = dao;
     const nft_id = findNftByIdx(asset ?? "")
     const params = new URLSearchParams({
-      nft: nft_id.toString(),
+      nft_id: nft_id.toString(),
       mbrs: count.toString(),
       frcn: fractions.toString(),
     });
