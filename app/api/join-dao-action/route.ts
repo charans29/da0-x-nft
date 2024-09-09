@@ -15,8 +15,9 @@ export async function GET(request: Request) {
       return new Response('Missing required parameters', { status: 400 });
   }
   const assetVal = NFTs[parseInt(idx)].floorPrice;
-  const iconURL = new URL(NFTs[parseInt(idx)].image ?? "", requestURL.origin);
-
+  const iconURL = new URL(NFTs[parseInt(idx)].image ?? "", "https://blink-by-daoxnft.vercel.app");
+  console.log("R____E____Q____S_____T URL: ", requestURL.origin);
+  console.log("I___M___G URL: ", iconURL);
     const payload: ActionGetResponse = {
         icon: iconURL.toString(),
         description: `NFT Value: ${assetVal} • Current members: ${count}/${fractions}`,

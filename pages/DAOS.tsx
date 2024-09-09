@@ -78,7 +78,7 @@ function DAOS() {
     });
   
     const daoActionUrl = `https://da0-x-nft.vercel.app/api/join-dao-action?${params.toString()}`;
-    const dscvrBlinkUrl = `https://dscvr-blinks.vercel.app/?action=${encodeURIComponent(daoActionUrl)}`;
+    const dscvrBlinkUrl = `https://blink-by-daoxnft.vercel.app/?action=${encodeURIComponent(daoActionUrl)}`;
   
     setBlinkURL(dscvrBlinkUrl);
     console.log(`SOLANA_BLINK_URL:`, daoActionUrl);
