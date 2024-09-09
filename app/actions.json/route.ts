@@ -14,13 +14,8 @@ export const GET = async () => {
     ],
   };
 
-  const extendedHeaders = {
-    ...ACTIONS_CORS_HEADERS,
-    "Access-Control-Allow-Origin": "https://api.dscvr.one",
-  };
-
   return Response.json(payload, {
-    headers: extendedHeaders,
+    headers: ACTIONS_CORS_HEADERS,
   });
 };
 

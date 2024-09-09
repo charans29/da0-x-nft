@@ -1,14 +1,8 @@
-const ACTIONS_CORS_HEADERS = {
-  "Access-Control-Allow-Origin": "https://api.dscvr.one",
-  "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
-  "Access-Control-Allow-Headers": "Content-Type",
-  "Access-Control-Allow-Credentials": "true",
-};
-
 import DAOs from "@/pages/api/DAOs";
 import NFTs from "@/pages/api/NFTs";
 import {
   ActionGetResponse,
+  ACTIONS_CORS_HEADERS
 } from "@solana/actions";
   
 export async function GET(request: Request) {
@@ -22,7 +16,7 @@ export async function GET(request: Request) {
   }
 
   const assetVal = NFTs[parseInt(idx)].floorPrice;
-  const iconURL = new URL(NFTs[parseInt(idx)].image ?? "", "https://blink-by-daoxnft.vercel.app");
+  const iconURL = new URL(NFTs[parseInt(idx)].image ?? "", requestURL.origin);
   
   const payload: ActionGetResponse = {
     icon: iconURL.toString(),
