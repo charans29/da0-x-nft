@@ -1,4 +1,4 @@
-export const ACTIONS_CORS_HEADERS = {
+const ACTIONS_CORS_HEADERS = {
   "Access-Control-Allow-Origin": "https://api.dscvr.one",
   "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
   "Access-Control-Allow-Headers": "Content-Type",
