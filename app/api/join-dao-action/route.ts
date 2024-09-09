@@ -1,43 +1,49 @@
+export const ACTIONS_CORS_HEADERS = {
+  "Access-Control-Allow-Origin": "https://api.dscvr.one",
+  "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+  "Access-Control-Allow-Headers": "Content-Type",
+  "Access-Control-Allow-Credentials": "true",
+};
+
 import DAOs from "@/pages/api/DAOs";
 import NFTs from "@/pages/api/NFTs";
 import {
-    ActionGetResponse,
-    ACTIONS_CORS_HEADERS,
-  } from "@solana/actions";
+  ActionGetResponse,
+} from "@solana/actions";
   
- 
 export async function GET(request: Request) {
   const requestURL = new URL(request.url);
   const idx = requestURL.searchParams.get('nft_id');
   const count = requestURL.searchParams.get('mbrs');
   const fractions = requestURL.searchParams.get('frcn');
+  
   if (!idx || !count || !fractions) {
-      return new Response('Missing required parameters', { status: 400 });
+    return new Response('Missing required parameters', { status: 400 });
   }
+
   const assetVal = NFTs[parseInt(idx)].floorPrice;
   const iconURL = new URL(NFTs[parseInt(idx)].image ?? "", "https://blink-by-daoxnft.vercel.app");
-  console.log("R____E____Q____S_____T URL: ", requestURL.origin);
-  console.log("I___M___G URL: ", iconURL);
-    const payload: ActionGetResponse = {
-        icon: iconURL.toString(),
-        description: `NFT Value: ${assetVal} • Current members: ${count}/${fractions}`,
-        title: "Join MY DAO",
-        label: "Join DAO",
-        links: {
-            actions: [
-                {
-                    label: "Join",
-                    href: request.url
-                },
-            ],
-        },
-    };
-
-    const response = Response.json(payload, { headers: ACTIONS_CORS_HEADERS });
-
-    return response;
-}
   
+  const payload: ActionGetResponse = {
+    icon: iconURL.toString(),
+    description: `NFT Value: ${assetVal} • Current members: ${count}/${fractions}`,
+    title: "Join MY DAO",
+    label: "Join DAO",
+    links: {
+      actions: [
+        {
+          label: "Join",
+          href: request.url,
+        },
+      ],
+    },
+  };
+
+  return new Response(JSON.stringify(payload), {
+    headers: ACTIONS_CORS_HEADERS,
+  });
+}
+
 export async function POST(request: Request) {
   const requestURL = new URL(request.url);
   const id = requestURL.searchParams.get('id');
@@ -68,10 +74,13 @@ export async function POST(request: Request) {
     },
   };
 
-  const response = Response.json(payload, { headers: ACTIONS_CORS_HEADERS });
-  return response;
+  return new Response(JSON.stringify(payload), {
+    headers: ACTIONS_CORS_HEADERS,
+  });
 }
 
-  export async function OPTIONS(request: Request) {
-  return new Response(null, { headers: ACTIONS_CORS_HEADERS });
+export async function OPTIONS(request: Request) {
+  return new Response(null, {
+    headers: ACTIONS_CORS_HEADERS,
+  });
 }
