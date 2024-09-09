@@ -2,7 +2,7 @@ import UserDaos from '@/components/UserDaos';
 import { useDAO } from '@/context/DaoContext';
 import React, { useEffect, useState } from 'react';
 import { GiOrganigram } from 'react-icons/gi';
-import { CanvasInterface, CanvasClient } from '@dscvr-one/canvas-client-sdk';
+import { CanvasClient } from '@dscvr-one/canvas-client-sdk';
 
 
 function Header() {
