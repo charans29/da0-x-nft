@@ -15,10 +15,10 @@ export async function GET(request: Request) {
       return new Response('Missing required parameters', { status: 400 });
   }
   const assetVal = NFTs[parseInt(idx)].floorPrice;
-  const iconURL = new URL(NFTs[parseInt(idx)].image ?? "", requestURL.origin);
+  // const iconURL = new URL(NFTs[parseInt(idx)].image ?? "", requestURL.origin);
 
     const payload: ActionGetResponse = {
-        icon: iconURL.toString(),
+        icon: "/cover.png",     //iconURL.toString()
         description: `NFT Value: ${assetVal} • Current members: ${count}/${fractions}`,
         title: "Join MY DAO",
         label: "Join DAO",
