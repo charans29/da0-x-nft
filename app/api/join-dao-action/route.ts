@@ -41,7 +41,6 @@ export async function GET(request: Request) {
         {
           label: "Join",
           href: request.url,
-          // disabled: false
         },
       ],
     },
@@ -93,9 +92,21 @@ export const POST = async (req: Request) => {
     const body: ActionPostRequest = await req.json();
     const requestURL = new URL(req.url);
 
-    const daoIndex = parseInt(requestURL.searchParams.get('id') ?? "");
-    if (isNaN(daoIndex) || !DAOs[daoIndex]) {
-      return new Response("Invalid DAO ID", { status: 400 });
+    // Get parameters from the URL
+    const idx = requestURL.searchParams.get('nft_id');
+    const countStr = requestURL.searchParams.get('mbrs');
+    const fractionsStr = requestURL.searchParams.get('frcn');
+
+    if (!idx || !countStr || !fractionsStr) {
+      return new Response('Missing required parameters', { status: 400 });
+    }
+
+    const count = parseInt(countStr);
+    const fractions = parseInt(fractionsStr);
+
+    // Ensure the count doesn't exceed the fractions (max limit)
+    if (count >= fractions) {
+      return new Response("DAO is already full", { status: 400 });
     }
 
     let account: PublicKey;
@@ -116,10 +127,6 @@ export const POST = async (req: Request) => {
     let daoActionAuthorityPrivateKey = JSON.parse(process.env.DAO_ACTION_AUTHORITY || '');
     const actionAuthority = Keypair.fromSecretKey(Uint8Array.from(daoActionAuthorityPrivateKey));
 
-    // Increment DAO count
-    const dao = DAOs[daoIndex];
-    dao.count += 1;
-
     // Transaction to trigger the DAO join action
     const transaction = new Transaction().add(
       SystemProgram.transfer({
@@ -129,7 +136,7 @@ export const POST = async (req: Request) => {
       }),
       new TransactionInstruction({
         programId: new PublicKey(MEMO_PROGRAM_ID),
-        data: Buffer.from(`Joined DAO: ${daoIndex}`, "utf8"),
+        data: Buffer.from(`Joined DAO for NFT: ${idx}`, "utf8"),
         keys: [
           {
             pubkey: actionAuthority.publicKey,
@@ -151,18 +158,23 @@ export const POST = async (req: Request) => {
       signers: [actionAuthority],
     });
 
-    const iconURL = new URL(dao.asset ?? "", requestURL.origin);
+    // Increment the count and prepare the response
+    const newCount = count + 1;
+    const assetVal = NFTs[parseInt(idx)].floorPrice;
+    const iconURL = new URL(NFTs[parseInt(idx)].image ?? "", requestURL.origin);
+
     const responsePayload: ActionGetResponse = {
       icon: iconURL.toString(),
-      description: `You have joined the DAO. Current members: ${dao.count}/${dao.fractions}`,
-      title: "DAO's Ready. Let’s Flip! 🔥",
-      label: "Joined",
+      description: `NFT Value: ${assetVal} • Current members: ${newCount}/${fractions}`,
+      title: newCount === fractions ? "DAO's Ready. Let’s Flip! 🔥" : "Join MY DAO",
+      label: newCount === fractions ? "DAO Full" : "Join DAO",
+      disabled: newCount === fractions,  // Disable button if DAO is full
       links: {
         actions: [
           {
-            label: "Joined",
-            href: "#", // Disable action after joining
-            // disabled: true,
+            label: newCount === fractions ? "DAO Full" : "Join",
+            href: "#",  // Action is disabled if full
+            // disabled: newCount === fractions,
           },
         ],
       },
