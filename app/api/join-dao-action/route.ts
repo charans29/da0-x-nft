@@ -36,6 +36,7 @@ export async function GET(request: Request) {
     description: `NFT Value: ${assetVal} • Current members: ${count}/${fractions}`,
     title: count === fractions ? "DAO's Ready. Let’s Flip! 🔥" : "Join MY DAO",
     label: "Join DAO",
+    disabled: count === fractions,
     links: {
       actions: [
         {
@@ -51,42 +52,6 @@ export async function GET(request: Request) {
   });
 }
 
-// export async function POST(request: Request) {
-//   const requestURL = new URL(request.url);
-//   const id = requestURL.searchParams.get('id');
-//   const daoIndex = parseInt(id ?? "");
-
-//   if (isNaN(daoIndex) || !DAOs[daoIndex]) {
-//     return new Response("Invalid DAO ID", { status: 400 });
-//   }
-
-//   if (DAOs[daoIndex].count !== DAOs[daoIndex].count) DAOs[daoIndex].count += 1;
-
-//   const dao = DAOs[daoIndex];
-//   const { count, fractions, asset } = dao;
-//   const iconURL = new URL(asset ?? "", requestURL.origin);
-
-//   const payload: ActionGetResponse = {
-//     icon: iconURL.toString(),
-//     description: `Join this DAO. Current members: ${count}/${fractions}`,
-//     title: "Join DAO",
-//     label: "Join DAO",
-//     links: {
-//       actions: [
-//         {
-//           label: "Join",
-//           href: request.url,
-//         },
-//       ],
-//     },
-//   };
-
-//   return new Response(JSON.stringify(payload), {
-//     headers: ACTIONS_CORS_HEADERS,
-//   });
-// }
-
-
 export const POST = async (req: Request) => {
   try {
     const body: ActionPostRequest = await req.json();
@@ -98,7 +63,10 @@ export const POST = async (req: Request) => {
     const fractionsStr = requestURL.searchParams.get('frcn');
 
     if (!idx || !countStr || !fractionsStr) {
-      return new Response('Missing required parameters', { status: 400 });
+      return new Response(
+        JSON.stringify({ message: 'Missing required parameters' }),
+        { status: 400, headers: ACTIONS_CORS_HEADERS }
+      );
     }
 
     const count = parseInt(countStr);
@@ -106,17 +74,20 @@ export const POST = async (req: Request) => {
 
     // Ensure the count doesn't exceed the fractions (max limit)
     if (count >= fractions) {
-      return new Response("DAO is already full", { status: 400 });
+      return new Response(
+        JSON.stringify({ message: "DAO is already full" }),
+        { status: 400, headers: ACTIONS_CORS_HEADERS }
+      );
     }
 
     let account: PublicKey;
     try {
       account = new PublicKey(body.account);
     } catch (err) {
-      return new Response('Invalid "account" provided', {
-        status: 400,
-        headers: ACTIONS_CORS_HEADERS,
-      });
+      return new Response(
+        JSON.stringify({ message: 'Invalid "account" provided' }),
+        { status: 400, headers: ACTIONS_CORS_HEADERS }
+      );
     }
 
     const connection = new Connection(
@@ -187,12 +158,16 @@ export const POST = async (req: Request) => {
     console.log(err);
     let message = "An unknown error occurred";
     if (typeof err === "string") message = err;
-    return new Response(message, {
-      status: 400,
-      headers: ACTIONS_CORS_HEADERS,
-    });
+
+    // Return the error as a valid JSON response
+    return new Response(
+      JSON.stringify({ message: message }),
+      { status: 400, headers: ACTIONS_CORS_HEADERS }
+    );
   }
 };
+
+
 
 export async function OPTIONS(request: Request) {
   return new Response(null, {
