@@ -40,7 +40,7 @@ export async function GET(request: Request) {
     links: {
       actions: [
         {
-          label: "Join",
+          label: count === fractions ? "My DAO's Filled!" : "Join",
           href: request.url,
         },
       ],
@@ -62,6 +62,7 @@ export const POST = async (req: Request) => {
     const countStr = requestURL.searchParams.get('mbrs');
     const fractionsStr = requestURL.searchParams.get('frcn');
 
+    // Validate the required parameters
     if (!idx || !countStr || !fractionsStr) {
       return new Response(
         JSON.stringify({ message: 'Missing required parameters' }),
@@ -151,6 +152,7 @@ export const POST = async (req: Request) => {
       },
     };
 
+    // Return the response with the updated count and transaction
     return new Response(JSON.stringify(responsePayload), {
       headers: ACTIONS_CORS_HEADERS,
     });
